@@ -1,6 +1,6 @@
 package users;
 
-public abstract class Employee extends User
+public class Employee extends User
 {
 
 	Employee(String name, String idNumber, String email, String phone,

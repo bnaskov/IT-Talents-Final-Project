@@ -1,6 +1,6 @@
 package users;
 
-public abstract class Client extends User implements IClient
+public class Client extends User implements IClient
 {
 
 	Client(String name, String idNumber, String email, String phone,
