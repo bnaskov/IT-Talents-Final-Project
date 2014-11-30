@@ -35,4 +35,8 @@ public class Bank {
 		onlineClient.openAccount();
 	}
 	
+	public void displayAllDeposits(){
+		
+	}
+	
 }

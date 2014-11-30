@@ -1,14 +1,15 @@
 package products.accounts;
 
-import products.IBankProduct.Type;
 
-public class Deposit extends Account{
+public abstract class Deposit extends Account{
 
 	private double interest;
+	private int durationMonths;
 	
-	public Deposit(String name, double value, double interest) {
+	public Deposit(String name, double value, double interest, int durationMonths) {
 		super(name, value, Type.DEPOSIT);
 		this.interest = interest;
+		this.durationMonths = durationMonths;
 	}
 
 }
