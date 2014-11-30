@@ -1,0 +1,10 @@
+package Users;
+
+public class Demo {
+
+	public static void main(String[] args) {
+		
+		Person ivan = new Person("Ivan", 8912198760, "ivancho@gmail.com","12345",  "1234", "Bulgaria", "Sofia", "Vrajdebna", 1000);
+	}
+
+}

@@ -1,0 +1,84 @@
+package Users;
+
+public abstract class User 
+{
+	private String name;
+	private Address address;
+	private int idNumber;
+	private String email;
+	private String phone;
+	private String password;
+	
+	User(String name, int idNumber, String email, String phone, String password,
+			String country, String city, String street, int postCode)
+		{
+			this.name = name;
+			this.idNumber = idNumber;
+			this.email = email;
+			this.phone = phone;
+			this.password = password;
+			Address address = new Address(country, city, street, postCode);
+		}
+
+	public String getName() 
+	{
+		return name;
+	}
+
+	public void setName(String name) 
+	{
+		this.name = name;
+	}
+
+	public Address getAddress() 
+	{
+		return address;
+	}
+
+	public void setAddress(Address address) 
+	{
+		this.address = address;
+	}
+
+	public int getIdNumber() 
+	{
+		return idNumber;
+	}
+
+	public void setIdNumber(int idNumber) 
+	{
+		this.idNumber = idNumber;
+	}
+
+	public String getEmail() 
+	{
+		return email;
+	}
+
+	public void setEmail(String email) 
+	{
+		this.email = email;
+	}
+
+	public String getPhone() 
+	{
+		return phone;
+	}
+
+	public void setPhone(String phone) 
+	{
+		this.phone = phone;
+	}
+
+	public String getPassword() 
+	{
+		return password;
+	}
+
+	public void setPassword(String password) 
+	{
+		this.password = password;
+	}
+	
+	
+}
