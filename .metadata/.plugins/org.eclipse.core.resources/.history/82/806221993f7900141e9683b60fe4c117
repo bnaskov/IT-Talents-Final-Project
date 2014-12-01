@@ -74,12 +74,4 @@ public abstract class User
 	{
 		return address;
 	}
-	
-	public void setAddress(String country, String city, String street, int postCode)
-	{
-		this.address.setCountry(country);
-		this.address.setCity(city);
-		this.address.setStreet(street);
-		this.address.setPostCode(postCode);
-	}
 }

@@ -1,0 +1,15 @@
+package users;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import products.BankProduct;
+
+public interface IClient 
+{
+	public void transferMoney();
+	public void openAccount();
+	public void openDeposit();
+	public HashMap<String, HashMap<String, ArrayList<BankProduct>>> getClientAccounts();
+	public String getName();
+}
