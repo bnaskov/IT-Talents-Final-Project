@@ -13,7 +13,7 @@ public abstract class Client extends User implements IClient
 			String password, String country, String city, String street, int postCode) 
 	{
 		super(name, idNumber, email, phone, password, country, city, street, postCode);
-		accounts = new HashMap<String, HashMap<String, ArrayList<BankProduct>>>();
+		setClientAccounts();
 	}
 	
 	public void transferMoney()
@@ -34,5 +34,10 @@ public abstract class Client extends User implements IClient
 	public HashMap<String, HashMap<String, ArrayList<BankProduct>>> getClientAccounts()
 	{
 		return accounts;
+	}
+	
+	public void setClientAccounts()
+	{
+		accounts = new HashMap<String, HashMap<String, ArrayList<BankProduct>>>();
 	}
 }

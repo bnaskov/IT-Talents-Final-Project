@@ -17,7 +17,7 @@ public abstract class User
 			setEmail(email);
 			setPhone(phone);
 			setPassword(password);
-			this.address = new Address(country, city, street, postCode);
+			setAddress(country, city, street, postCode);
 		}
 
 	public String getName() 
