@@ -7,9 +7,9 @@ import products.BankProduct;
 
 public interface IClient 
 {
-	public void transferMoney();
-	public void openAccount();
-	public void openDeposit();
+	public void transferMoney(String initiatorIban, String recipientIban, String reasonForTransfer, double amount);
+	public void openAccount(String initiatorIban, double amount);
+	public void openDeposit(String initiatorIban, double amount, int durationMonths, double interest);
 	public HashMap<String, HashMap<String, ArrayList<BankProduct>>> getClientAccounts();
 	public String getName();
 	public String getIdNumber();

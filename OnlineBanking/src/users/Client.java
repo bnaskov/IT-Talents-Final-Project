@@ -16,17 +16,17 @@ public abstract class Client extends User implements IClient
 		setClientAccounts();
 	}
 	
-	public void transferMoney()
+	public void transferMoney(String initiatorIban, String recipientIban, String reasonForTransfer, double amount)
 	{
 		
 	}
 	
-	public void openAccount()
+	public void openAccount(String initiatorIban, double amount)
 	{
 		
 	}
 	
-	public void openDeposit()
+	public void openDeposit(String initiatorIban, double amount, int durationMonths, double interest)
 	{
 		
 	}

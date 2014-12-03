@@ -8,5 +8,19 @@ public class Manager extends Employee
 	{
 		super(name, idNumber, email, phone, password, country, city, street, postCode);
 	}
-
+	
+	public void checkAccount(String iban)
+	{
+		
+	}
+	
+	public void checkClient(String clientIdNumber)
+	{
+		
+	}
+	
+	public void checkAllAccounts()
+	{
+		
+	}
 }

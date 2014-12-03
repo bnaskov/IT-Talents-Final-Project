@@ -9,4 +9,10 @@ public class Company extends Client
 		super(name, idNumber, email, phone, password, country, city, street, postCode);
 	}
 
+	public void transferMoney() {}
+
+	public void openAccount() {}
+
+	public void openDeposit() {}
+
 }

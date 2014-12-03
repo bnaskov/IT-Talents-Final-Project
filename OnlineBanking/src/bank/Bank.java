@@ -26,13 +26,17 @@ public class Bank {
 	//HashMap of all site users
 	HashMap<String, User> users = new HashMap(); 
 	
+	public void transferMoney(Client onlineClient){
+		
+	}
+	
 	public void openDeposit(Client onlineClient){
-		onlineClient.openDeposit();
+		//onlineClient.openDeposit();
 		
 	}
 	
 	public void openAccount(Client onlineClient){
-		onlineClient.openAccount();
+		//onlineClient.openAccount();
 	}
 	
 	public void displayAllDeposits(){
