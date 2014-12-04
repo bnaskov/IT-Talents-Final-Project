@@ -1,0 +1,51 @@
+package users;
+
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class Demo 
+{
+	public static void main(String[] args) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Transaction tr = new Transaction((new Timestamp(new Date().getTime())).toString(), "1234", "4321", "Just a gift!", 1000);
+		
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		
+	}
+}

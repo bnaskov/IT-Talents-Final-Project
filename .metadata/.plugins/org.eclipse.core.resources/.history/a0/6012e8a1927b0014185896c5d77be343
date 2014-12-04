@@ -1,0 +1,41 @@
+package users;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class Demo 
+{
+	static SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+	public static void main(String[] args) throws InterruptedException 
+	{
+		Transaction tr = new Transaction(sdf.format(new Date()), "1234", "4321", "Just a gift!", 1000);
+		Thread.sleep(1000);
+		Transaction tr1 = new Transaction(sdf.format(new Date()), "1234", "4321", "Just a gift!", 1000);
+		Thread.sleep(1000);
+		Transaction tr2 = new Transaction(sdf.format(new Date()), "1234", "4321", "Just a gift!", 1000);
+		Thread.sleep(1000);
+		Transaction tr3 = new Transaction(sdf.format(new Date()), "1234", "4321", "Just a gift!", 1000);
+		Thread.sleep(1000);
+		Transaction tr4 = new Transaction(sdf.format(new Date()), "1234", "4321", "Just a gift!", 1000);
+		Thread.sleep(1000);
+		Transaction tr5 = new Transaction(sdf.format(new Date()), "1234", "4321", "Just a gift!", 1000);
+		Thread.sleep(1000);
+		Transaction tr6 = new Transaction(sdf.format(new Date()), "1234", "4321", "Just a gift!", 1000);
+		Thread.sleep(1000);
+		Transaction tr7 = new Transaction(sdf.format(new Date()), "1234", "4321", "Just a gift!", 1000);
+		Thread.sleep(1000);
+		Transaction tr8 = new Transaction(sdf.format(new Date()), "1234", "4321", "Just a gift!", 1000);
+		
+		
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr1.getTransactionDate());
+		System.out.println(tr2.getTransactionDate());
+		System.out.println(tr3.getTransactionDate());
+		System.out.println(tr4.getTransactionDate());
+		System.out.println(tr5.getTransactionDate());
+		System.out.println(tr6.getTransactionDate());
+		System.out.println(tr7.getTransactionDate());
+		System.out.println(tr8.getTransactionDate());
+		
+	}
+}

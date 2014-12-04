@@ -1,13 +1,17 @@
 package bank;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import products.IBankProduct;
+import products.accounts.Account;
+import products.accounts.Deposit;
 import users.Client;
+import users.IClient;
 import users.User;
 
-public class Bank {
+public class Bank implements IBank{
 	
 	private String name;
 	private String address;
@@ -24,23 +28,29 @@ public class Bank {
 	}
 	
 	//HashMap of all site users
-	HashMap<String, User> users = new HashMap(); 
-	
-	public void transferMoney(Client onlineClient){
-		
-	}
-	
-	public void openDeposit(Client onlineClient){
-		//onlineClient.openDeposit();
-		
-	}
-	
-	public void openAccount(Client onlineClient){
-		//onlineClient.openAccount();
-	}
+	HashMap<String, User> users = new HashMap();
+	HashMap<String, ArrayList<Account>> allAccounts = new HashMap();
 	
 	public void displayAllDeposits(){
 		
 	}
+
+	public boolean transferMoney(IClient client, String initiatorIban,
+			String recipientIban, String reasonForTransfer, double amount) {
+				return true;
+		
+	}
+
+	public boolean openAccount(IClient client, String initiatorIban, double amount) {
+		return true;
+		
+	}
+
+	public boolean openDeposit(IClient client, String initiatorIban,
+			double amount, Deposit deposit) {
+				return true;
+		
+	}
+	
 	
 }

@@ -4,9 +4,9 @@ public abstract class Employee extends User
 {
 
 	Employee(String name, String idNumber, String email, String phone,
-			String password, String country, String city, String street, int postCode) 
+			String password, String city, String street) 
 	{
-		super(name, idNumber, email, phone, password, country, city, street, postCode);
+		super(name, idNumber, email, phone, password, city, street);
 	}
 
 }

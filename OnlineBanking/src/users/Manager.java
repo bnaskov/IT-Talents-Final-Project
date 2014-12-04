@@ -4,22 +4,22 @@ public class Manager extends Employee
 {
 
 	Manager(String name, String idNumber, String email, String phone,
-			String password, String country, String city, String street, int postCode) 
+			String password, String city, String street) 
 	{
-		super(name, idNumber, email, phone, password, country, city, street, postCode);
+		super(name, idNumber, email, phone, password, city, street);
 	}
 	
-	public void checkAccount(String iban)
-	{
-		
-	}
-	
-	public void checkClient(String clientIdNumber)
+	public void listAccount(String iban)
 	{
 		
 	}
 	
-	public void checkAllAccounts()
+	public void listClientAccounts(String clientIdNumber)
+	{
+		
+	}
+	
+	public void listAllAccounts()
 	{
 		
 	}

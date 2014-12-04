@@ -1,0 +1,52 @@
+package users;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class Demo 
+{
+	static SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+	public static void main(String[] args) {
+		Transaction tr = new Transaction(sdf.format(new Date()), "1234", "4321", "Just a gift!", 1000);
+		
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		System.out.println(tr.getTransactionDate());
+		
+		
+		
+	}
+}

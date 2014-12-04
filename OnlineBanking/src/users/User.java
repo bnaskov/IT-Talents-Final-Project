@@ -3,83 +3,51 @@ package users;
 public abstract class User 
 {
 	private String name;
-	private Address address;
 	private String idNumber;
+	private String city;
+	private String street;
 	private String email;
 	private String phone;
 	private String password;
 	
 	User(String name, String idNumber, String email, String phone, String password,
-			String country, String city, String street, int postCode)
+			String city, String street)
 		{
 			setName(name);
 			setIdNumber(idNumber);
 			setEmail(email);
 			setPhone(phone);
 			setPassword(password);
-			setAddress(country, city, street, postCode);
+			setCity(city);
+			setStreet(street);
 		}
 
-	public String getName() 
-	{
-		return name;
-	}
+	public String getName() {	return name;	}
 
-	public void setName(String name) 
-	{
-		this.name = name;
-	}
+	public void setName(String name) {	this.name = name;	}
 
-	public String getIdNumber() 
-	{
-		return idNumber;
-	}
+	public String getIdNumber() {	return idNumber;	}
 
-	public void setIdNumber(String idNumber) 
-	{
-		this.idNumber = idNumber;
-	}
+	public void setIdNumber(String idNumber) {	this.idNumber = idNumber;	}
 
-	public String getEmail() 
-	{
-		return email;
-	}
+	public String getEmail() {	return email;	}
 
-	public void setEmail(String email) 
-	{
-		this.email = email;
-	}
+	public void setEmail(String email) {	this.email = email;		}
 
-	public String getPhone() 
-	{
-		return phone;
-	}
+	public String getPhone() {	return phone;	}
 
-	public void setPhone(String phone) 
-	{
-		this.phone = phone;
-	}
+	public void setPhone(String phone) {	this.phone = phone;		}
 
-	public String getPassword() 
-	{
-		return password;
-	}
+	public String getPassword() {	return password;	}
 
-	public void setPassword(String password) 
-	{
-		this.password = password;
-	}
+	public void setPassword(String password) {	this.password = password;		}
+
+	public String getCity() {	return city;	}
+
+	public void setCity(String city) {	this.city = city;	}
+
+	public String getStreet() {	return street;		}
+
+	public void setStreet(String street) {	this.street = street;		}
 	
-	public Address getAddress()
-	{
-		return address;
-	}
-	
-	public void setAddress(String country, String city, String street, int postCode)
-	{
-		this.address.setCountry(country);
-		this.address.setCity(city);
-		this.address.setStreet(street);
-		this.address.setPostCode(postCode);
-	}
 }

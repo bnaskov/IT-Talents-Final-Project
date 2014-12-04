@@ -1,0 +1,41 @@
+package users;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class Demo 
+{
+	static SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+	public static void main(String[] args) throws InterruptedException 
+	{
+		Transaction tr = new Transaction(sdf.format(new Date()), "1234", "4321", "Just a gift!", 1000);
+		Thread.sleep(1000);
+		Transaction tr1 = new Transaction(sdf.format(new Date()), "1234", "4321", "Just a gift!", 1000);
+		Thread.sleep(1000);
+		Transaction tr2 = new Transaction(sdf.format(new Date()), "1234", "4321", "Just a gift!", 1000);
+		Thread.sleep(1000);
+		Transaction tr3 = new Transaction(sdf.format(new Date()), "1234", "4321", "Just a gift!", 1000);
+		Thread.sleep(1000);
+		Transaction tr4 = new Transaction(sdf.format(new Date()), "1234", "4321", "Just a gift!", 1000);
+		Thread.sleep(1000);
+		Transaction tr5 = new Transaction(sdf.format(new Date()), "1234", "4321", "Just a gift!", 1000);
+		Thread.sleep(1000);
+		Transaction tr6 = new Transaction(sdf.format(new Date()), "1234", "4321", "Just a gift!", 1000);
+		Thread.sleep(1000);
+		Transaction tr7 = new Transaction(sdf.format(new Date()), "1234", "4321", "Just a gift!", 1000);
+		Thread.sleep(1000);
+		Transaction tr8 = new Transaction(sdf.format(new Date()), "1234", "4321", "Just a gift!", 1000);
+		
+		
+		System.out.println(tr.getTransactionDate() + " " +  tr.getInitiatorIban() + " " + tr.getRecipientIban() + " " + tr.getReasonForTransfer() + " " + tr.getTransferAmount());
+		System.out.println(tr1.getTransactionDate() + " " +  tr1.getInitiatorIban() + " " + tr1.getRecipientIban() + " " + tr1.getReasonForTransfer() + " " + tr1.getTransferAmount());
+		System.out.println(tr2.getTransactionDate() + " " +  tr2.getInitiatorIban() + " " + tr2.getRecipientIban() + " " + tr2.getReasonForTransfer() + " " + tr2.getTransferAmount());
+		System.out.println(tr3.getTransactionDate() + " " +  tr3.getInitiatorIban() + " " + tr3.getRecipientIban() + " " + tr3.getReasonForTransfer() + " " + tr3.getTransferAmount());
+		System.out.println(tr4.getTransactionDate() + " " +  tr4.getInitiatorIban() + " " + tr4.getRecipientIban() + " " + tr4.getReasonForTransfer() + " " + tr4.getTransferAmount());
+		System.out.println(tr5.getTransactionDate() + " " +  tr5.getInitiatorIban() + " " + tr5.getRecipientIban() + " " + tr5.getReasonForTransfer() + " " + tr5.getTransferAmount());
+		System.out.println(tr6.getTransactionDate() + " " +  tr6.getInitiatorIban() + " " + tr6.getRecipientIban() + " " + tr6.getReasonForTransfer() + " " + tr6.getTransferAmount());
+		System.out.println(tr7.getTransactionDate() + " " +  tr7.getInitiatorIban() + " " + tr7.getRecipientIban() + " " + tr7.getReasonForTransfer() + " " + tr7.getTransferAmount());
+		System.out.println(tr8.getTransactionDate() + " " +  tr8.getInitiatorIban() + " " + tr8.getRecipientIban() + " " + tr8.getReasonForTransfer() + " " + tr8.getTransferAmount());
+		
+	}
+}

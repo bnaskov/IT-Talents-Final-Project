@@ -1,0 +1,38 @@
+package users;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import products.IBankProduct;
+import products.accounts.Deposit;
+
+public abstract class Client extends User implements IClient
+{
+	private HashMap<String, HashMap<String, ArrayList<IBankProduct>>> accounts;
+	private ArrayList<Transaction> transactions;
+
+	Client(String name, String idNumber, String email, String phone,
+			String password, String city, String street, HashMap<String, HashMap<String, ArrayList<IBankProduct>>> accounts,	
+			ArrayList<Transaction> transactions) 
+	{
+		super(name, idNumber, email, phone, password, city, street);
+		this.accounts = accounts;
+		this.transactions = transactions;
+	}
+	
+	public void transferMoney(String initiatorIban, String recipientIban, String reasonForTransfer, double amount)
+	{
+		
+	}
+	
+	public void openAccount(String initiatorIban, double amount)
+	{
+		
+	}
+	
+	public void openDeposit(String initiatorIban, double amount, Deposit deposit)
+	{
+		
+	}
+	
+}
