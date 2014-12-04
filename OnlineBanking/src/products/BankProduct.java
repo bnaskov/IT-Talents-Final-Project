@@ -6,13 +6,13 @@ public abstract class BankProduct {
 
 	// private Date date = new Date();
 
-	public BankProduct(double value) {
-		this.amount = value;
+	public BankProduct(double amount) {
+		this.setAmount(amount);
 
 	}
 
-	public void setValue(double value) {
-		this.amount = value;
+	public void setAmount(double amount) {
+		this.amount = amount;
 	}
 
 	public Double getAmount() {

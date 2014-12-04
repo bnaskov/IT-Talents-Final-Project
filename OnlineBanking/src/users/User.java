@@ -1,7 +1,6 @@
 package users;
 
-public abstract class User 
-{
+public abstract class User {
 	private String name;
 	private String idNumber;
 	private String city;
@@ -9,45 +8,72 @@ public abstract class User
 	private String email;
 	private String phone;
 	private String password;
-	
-	User(String name, String idNumber, String email, String phone, String password,
-			String city, String street)
-		{
-			setName(name);
-			setIdNumber(idNumber);
-			setEmail(email);
-			setPhone(phone);
-			setPassword(password);
-			setCity(city);
-			setStreet(street);
-		}
 
-	public String getName() {	return name;	}
+	User(String name, String idNumber, String email, String phone,
+			String password, String city, String street) {
+		setName(name);
+		setIdNumber(idNumber);
+		setEmail(email);
+		setPhone(phone);
+		setPassword(password);
+		setCity(city);
+		setStreet(street);
+	}
 
-	public void setName(String name) {	this.name = name;	}
+	public String getName() {
+		return name;
+	}
 
-	public String getIdNumber() {	return idNumber;	}
+	public void setName(String name) {
+		this.name = name;
+	}
 
-	public void setIdNumber(String idNumber) {	this.idNumber = idNumber;	}
+	public String getIdNumber() {
+		return idNumber;
+	}
 
-	public String getEmail() {	return email;	}
+	public void setIdNumber(String idNumber) {
+		this.idNumber = idNumber;
+	}
 
-	public void setEmail(String email) {	this.email = email;		}
+	public String getEmail() {
+		return email;
+	}
 
-	public String getPhone() {	return phone;	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-	public void setPhone(String phone) {	this.phone = phone;		}
+	public String getPhone() {
+		return phone;
+	}
 
-	public String getPassword() {	return password;	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
-	public void setPassword(String password) {	this.password = password;		}
+	public String getPassword() {
+		return password;
+	}
 
-	public String getCity() {	return city;	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-	public void setCity(String city) {	this.city = city;	}
+	public String getCity() {
+		return city;
+	}
 
-	public String getStreet() {	return street;		}
+	public void setCity(String city) {
+		this.city = city;
+	}
 
-	public void setStreet(String street) {	this.street = street;		}
-	
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
 }

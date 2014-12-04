@@ -2,6 +2,7 @@ package bank;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import products.accounts.Account;
 import products.accounts.Deposit;
@@ -13,7 +14,9 @@ public class Bank implements IBank {
 	private String name;
 	private String address;
 
-	// Singleton
+	private Map<String, User> users = new HashMap();
+	private Map<String, ArrayList<Account>> allAccounts = new HashMap();
+
 	private static Bank instance = null;
 
 	private Bank() {
@@ -25,10 +28,6 @@ public class Bank implements IBank {
 		}
 		return instance;
 	}
-
-	// HashMap of all site users
-	HashMap<String, User> users = new HashMap();
-	HashMap<String, ArrayList<Account>> allAccounts = new HashMap();
 
 	public void displayAllDeposits() {
 
