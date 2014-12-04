@@ -1,35 +1,21 @@
 package products;
 
-import java.util.Date;
+public abstract class BankProduct {
 
-public abstract class BankProduct implements IBankProduct{
+	private double amount;
 
-	private String name;
-	private double value;
-	private Type type;
-	private Date date = new Date();
-	
-	public BankProduct(String name, double value, Type type) {
-		this.name = name;
-		this.value = value;
-		this.type = type;
-		
+	// private Date date = new Date();
+
+	public BankProduct(double value) {
+		this.amount = value;
+
 	}
-	
-	public void setName(String name)     {		this.name = name;	  }
-	public void setValue(double value)   {		this.value = value;   }
-	public void setType(Type type)       {		this.type = type;	  }
 
-	public String getName()		{		return this.name;	}
+	public void setValue(double value) {
+		this.amount = value;
+	}
 
-	public Double getValue() 	{		return this.value;	}
-
-	public Type getType() 		{		return this.type;	}
-	
-	public Date getDate()		{		return this.date;	}
-
-	
+	public Double getAmount() {
+		return this.amount;
+	}
 }
-
-
-
