@@ -85,7 +85,7 @@ public class Bank implements IBank {
 		if(allAccounts.containsKey(initiatorIban)) {
 			if(allAccounts.get(initiatorIban).getAmount() >= amount) {
 				if(!client.getClientAccounts().containsKey("CurrentAccount"))
-					client.getClientAccounts().put("CurrentAccount", new HashMap());
+					client.getClientAccounts().put("CurrentAccount", new HashMap<String, ArrayList<Account>>());
 				if(!client.getClientAccounts().get("CurrentAccount").containsKey("CurrentAccountBGN"))
 					client.getClientAccounts().get("CurrentAccount").put("CurrentAccountBGN", new ArrayList<Account>());
 				client.getClientAccounts().get("CurrentAccount").get("CurrentAccountBGN").add(new CurrentAccountBGN(amount));
@@ -105,7 +105,7 @@ public class Bank implements IBank {
 		if(allAccounts.containsKey(initiatorIban)) {
 			if(allAccounts.get(initiatorIban).getAmount() >= amount) {
 				if(!client.getClientAccounts().containsKey("Deposit"))
-					client.getClientAccounts().put("Deposit", new HashMap());
+					client.getClientAccounts().put("Deposit", new HashMap<String, ArrayList<Account>>());
 				if(deposit instanceof DepositLongTerm) {
 					if(!client.getClientAccounts().get("Deposit").containsKey("DepositLongTerm"))
 						client.getClientAccounts().get("CurrentAccount").put("DepositLongTerm", new ArrayList<Account>());
