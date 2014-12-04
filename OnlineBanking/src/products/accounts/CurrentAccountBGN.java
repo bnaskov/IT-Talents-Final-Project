@@ -6,5 +6,11 @@ public class CurrentAccountBGN extends CurrentAccount {
 		super(amount);
 		// TODO Auto-generated constructor stub
 	}
+	
+	@Override
+	public String toString() {
+		return "CurrentAccountBGN [getIBAN()=" + getIBAN() + ", getAmount()=" + getAmount()
+				+ "]";
+	}
 
 }

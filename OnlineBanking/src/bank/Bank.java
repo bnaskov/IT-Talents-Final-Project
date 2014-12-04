@@ -76,6 +76,7 @@ public class Bank implements IBank {
 				if(!client.getClientAccounts().get("CurrentAccount").containsKey("CurrentAccountBGN"))
 					client.getClientAccounts().get("CurrentAccount").put("CurrentAccountBGN", new ArrayList<Account>());
 				client.getClientAccounts().get("CurrentAccount").get("CurrentAccountBGN").add(new CurrentAccountBGN(amount));
+				allAccounts.get(initiatorIban).removeMoneyFromAccount(amount);
 			}
 			else {
 				System.out.println("You have not enough money to open this Account!"); //for testing
@@ -96,11 +97,13 @@ public class Bank implements IBank {
 					if(!client.getClientAccounts().get("Deposit").containsKey("DepositLongTerm"))
 						client.getClientAccounts().get("CurrentAccount").put("DepositLongTerm", new ArrayList<Account>());
 					client.getClientAccounts().get("CurrentAccount").get("DepositLongTerm").add(new DepositLongTerm(amount));
+					allAccounts.get(initiatorIban).removeMoneyFromAccount(amount);
 				}
 				else if(deposit instanceof DepositShortTerm) {
 					if(!client.getClientAccounts().get("Deposit").containsKey("DepositShortTerm"))
 						client.getClientAccounts().get("CurrentAccount").put("DepositShortTerm", new ArrayList<Account>());
 					client.getClientAccounts().get("CurrentAccount").get("DepositShortTerm").add(new DepositShortTerm(amount));
+					allAccounts.get(initiatorIban).removeMoneyFromAccount(amount);
 				}
 			}
 			else {
