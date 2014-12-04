@@ -22,4 +22,11 @@ public abstract class Account extends BankProduct {
 		return "Account [iban=" + iban + "]";
 	}
 	
+	public void addMoneyToAccount(double amount) {
+		this.amount += amount;
+	}
+	
+	public void removeMoneyFromAccount(double amount) {
+		this.amount -= amount;
+	}
 }

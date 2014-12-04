@@ -17,5 +17,11 @@ public class DepositShortTerm extends Deposit {
 				+ ", getIBAN()=" + getIBAN() + ", getAmount()=" + getAmount()
 				+ "]";
 	}
+	
+	@Override
+	public String getIBAN() {
+		// TODO Auto-generated method stub
+		return super.getIBAN();
+	}
 
 }

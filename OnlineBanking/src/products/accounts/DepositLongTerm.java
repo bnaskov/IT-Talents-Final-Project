@@ -8,5 +8,19 @@ public class DepositLongTerm extends Deposit {
 	public DepositLongTerm(double amount) {
 		super(amount, LONG_TERM_INTEREST, LONG_TERM_DURATION);
 	}
+	
+	@Override
+	public String toString() {
+		return "DepositLongTerm [getInterest()=" + getInterest()
+				+ ", getDurationMonths()=" + getDurationMonths()
+				+ ", getIBAN()=" + getIBAN() + ", getAmount()=" + getAmount()
+				+ "]";
+	}
+	
+	@Override
+	public String getIBAN() {
+		// TODO Auto-generated method stub
+		return super.getIBAN();
+	}
 
 }

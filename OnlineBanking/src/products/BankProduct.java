@@ -2,7 +2,7 @@ package products;
 
 public abstract class BankProduct {
 
-	private double amount;
+	protected double amount;
 
 	// private Date date = new Date();
 
@@ -18,4 +18,5 @@ public abstract class BankProduct {
 	public Double getAmount() {
 		return this.amount;
 	}
+	
 }

@@ -5,20 +5,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import products.BankProduct;
+import products.accounts.Account;
 import products.accounts.Deposit;
 import bank.Bank;
 
 public abstract class Client extends User implements IClient {
 
-	private Map<String, HashMap<String, ArrayList<BankProduct>>> accounts;
+	private Map<String, HashMap<String, ArrayList<Account>>> accounts;
 	private List<Transaction> transactions;
 
 	// Date Timestamp db
 
 	Client(String name, String idNumber, String email, String phone,
 			String password, String city, String street,
-			HashMap<String, HashMap<String, ArrayList<BankProduct>>> accounts,
+			HashMap<String, HashMap<String, ArrayList<Account>>> accounts,
 			ArrayList<Transaction> transactions) {
 		super(name, idNumber, email, phone, password, city, street);
 		this.accounts = accounts;
@@ -35,16 +35,15 @@ public abstract class Client extends User implements IClient {
 	}
 
 	public void openAccount(String initiatorIban, double amount) {
-		if (Bank.getInstance().openAccount(this, initiatorIban, amount)) {
-
-		}
+		Bank.getInstance().openAccount(this, initiatorIban, amount);
 	}
 
 	public void openDeposit(String initiatorIban, double amount, Deposit deposit) {
-		if (Bank.getInstance()
-				.openDeposit(this, initiatorIban, amount, deposit)) {
-
-		}
+		Bank.getInstance().openDeposit(this, initiatorIban, amount, deposit);
+	}
+	
+	public Map<String, HashMap<String, ArrayList<Account>>> getClientAccounts() {
+		return accounts;
 	}
 
 }
