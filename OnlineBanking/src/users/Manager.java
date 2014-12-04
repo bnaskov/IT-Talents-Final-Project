@@ -2,7 +2,7 @@ package users;
 
 public class Manager extends Employee {
 
-	Manager(String name, String idNumber, String email, String phone,
+	public Manager(String name, String idNumber, String email, String phone,
 			String password, String city, String street) {
 		super(name, idNumber, email, phone, password, city, street);
 	}

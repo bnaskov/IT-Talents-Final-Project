@@ -9,7 +9,7 @@ import bank.Bank;
 
 public class Person extends Client {
 
-	Person(String name, String idNumber, String email, String phone,
+	public Person(String name, String idNumber, String email, String phone,
 			String password, String city, String street,
 			HashMap<String, HashMap<String, ArrayList<BankProduct>>> accounts,
 			ArrayList<Transaction> transactions) {
