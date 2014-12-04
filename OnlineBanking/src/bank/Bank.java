@@ -10,15 +10,15 @@ import products.accounts.CurrentAccountBGN;
 import products.accounts.Deposit;
 import products.accounts.DepositLongTerm;
 import products.accounts.DepositShortTerm;
+import users.Client;
 import users.IClient;
-import users.User;
 
 public class Bank implements IBank {
 
 	private String name;
 	private String address;
 
-	private Map<String, User> users = new HashMap();
+	private Map<String, IClient> users = new HashMap();
 	private Map<String, Account> allAccounts = new HashMap<String, Account>();
 
 	private static Bank instance = null;
@@ -32,10 +32,23 @@ public class Bank implements IBank {
 		}
 		return instance;
 	}
+	
+	public Map<String, IClient> getUsers() {
+		return users;
+	}
+	
+	public Map<String, Account> getAccounts() {
+		return allAccounts;
+	}
+	
+	public void addClientToBank(IClient client) {
+		users.put(((Client) client).getIdNumber(), client);
+	}
 
 	public void displayAllDeposits() {
 
 	}
+	
 	public void addAccountsInBank(String iban, Account account) {
 		if(iban != null && account != null)
 			allAccounts.put(iban, account);

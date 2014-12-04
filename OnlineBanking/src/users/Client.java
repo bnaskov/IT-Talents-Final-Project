@@ -41,7 +41,7 @@ public abstract class Client extends User implements IClient {
 	public void openDeposit(String initiatorIban, double amount, Deposit deposit) {
 		Bank.getInstance().openDeposit(this, initiatorIban, amount, deposit);
 	}
-	
+
 	public Map<String, HashMap<String, ArrayList<Account>>> getClientAccounts() {
 		return accounts;
 	}
