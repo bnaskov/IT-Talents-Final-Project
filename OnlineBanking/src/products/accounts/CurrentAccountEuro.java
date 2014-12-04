@@ -1,10 +1,9 @@
 package products.accounts;
 
-public class CurrentAccountEuro extends CurrentAccount{
+public class CurrentAccountEuro extends CurrentAccount {
 
-	public CurrentAccountEuro(String name, double value) {
-		super(name, value);
+	public CurrentAccountEuro(double amount) {
+		super(amount);
 		// TODO Auto-generated constructor stub
 	}
-
 }

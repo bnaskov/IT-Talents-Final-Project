@@ -1,9 +1,12 @@
 package products.accounts;
 
-public class DepositLongTerm extends Deposit{
+public class DepositLongTerm extends Deposit {
 
-	public DepositLongTerm(String name, double value, double interest) {
-		super(name, value, interest, 12);
+	private static final double LONG_TERM_INTEREST = 6;
+	private static final int LONG_TERM_DURATION = 12;
+
+	public DepositLongTerm(double amount, double interest, int durationMonths) {
+		super(amount, LONG_TERM_INTEREST, LONG_TERM_DURATION);
 	}
 
 }
