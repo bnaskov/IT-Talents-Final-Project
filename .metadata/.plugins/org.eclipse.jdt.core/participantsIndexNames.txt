@@ -1,5 +1,0 @@
-INDEX VERSION 1.127
-C:\Users\JoRo\workspace\IT-Talents-Final-Project\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3070090631.index
-\banking2\src
-C:\Users\JoRo\workspace\IT-Talents-Final-Project\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2981098025.index
-\banking2\src
