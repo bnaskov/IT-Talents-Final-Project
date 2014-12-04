@@ -36,6 +36,10 @@ public class Bank implements IBank {
 	public void displayAllDeposits() {
 
 	}
+	public void addAccountsInBank(String iban, Account account) {
+		if(iban != null && account != null)
+			allAccounts.put(iban, account);
+	}
 
 	public boolean transferMoney(IClient client, String initiatorIban,
 			String recipientIban, String reasonForTransfer, double amount) {
