@@ -1,6 +1,6 @@
 package products.accounts;
 
-public class CurrentAccount extends Account {
+public abstract class CurrentAccount extends Account {
 
 	public CurrentAccount(double amount) {
 		super(amount);
