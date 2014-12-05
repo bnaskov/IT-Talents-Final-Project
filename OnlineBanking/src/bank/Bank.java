@@ -84,10 +84,12 @@ public class Bank implements IBank {
 			double amount) {
 		if(allAccounts.containsKey(initiatorIban)) {
 			if(allAccounts.get(initiatorIban).getAmount() >= amount) {
-				if(!client.getClientAccounts().containsKey("CurrentAccount"))
+				if(!client.getClientAccounts().containsKey("CurrentAccount")) {
 					client.getClientAccounts().put("CurrentAccount", new HashMap<String, ArrayList<Account>>());
-				if(!client.getClientAccounts().get("CurrentAccount").containsKey("CurrentAccountBGN"))
+				}
+				if(!client.getClientAccounts().get("CurrentAccount").containsKey("CurrentAccountBGN")) {
 					client.getClientAccounts().get("CurrentAccount").put("CurrentAccountBGN", new ArrayList<Account>());
+				}
 				client.getClientAccounts().get("CurrentAccount").get("CurrentAccountBGN").add(new CurrentAccountBGN(amount));
 				allAccounts.get(initiatorIban).removeMoneyFromAccount(amount);
 			}
@@ -104,17 +106,20 @@ public class Bank implements IBank {
 			double amount, Deposit deposit) {
 		if(allAccounts.containsKey(initiatorIban)) {
 			if(allAccounts.get(initiatorIban).getAmount() >= amount) {
-				if(!client.getClientAccounts().containsKey("Deposit"))
+				if(!client.getClientAccounts().containsKey("Deposit")) {
 					client.getClientAccounts().put("Deposit", new HashMap<String, ArrayList<Account>>());
+				}
 				if(deposit instanceof DepositLongTerm) {
-					if(!client.getClientAccounts().get("Deposit").containsKey("DepositLongTerm"))
+					if(!client.getClientAccounts().get("Deposit").containsKey("DepositLongTerm")) {
 						client.getClientAccounts().get("CurrentAccount").put("DepositLongTerm", new ArrayList<Account>());
+					}
 					client.getClientAccounts().get("CurrentAccount").get("DepositLongTerm").add(new DepositLongTerm(amount));
 					allAccounts.get(initiatorIban).removeMoneyFromAccount(amount);
 				}
 				else if(deposit instanceof DepositShortTerm) {
-					if(!client.getClientAccounts().get("Deposit").containsKey("DepositShortTerm"))
+					if(!client.getClientAccounts().get("Deposit").containsKey("DepositShortTerm")) {
 						client.getClientAccounts().get("CurrentAccount").put("DepositShortTerm", new ArrayList<Account>());
+					}
 					client.getClientAccounts().get("CurrentAccount").get("DepositShortTerm").add(new DepositShortTerm(amount));
 					allAccounts.get(initiatorIban).removeMoneyFromAccount(amount);
 				}
