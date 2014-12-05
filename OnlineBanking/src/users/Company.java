@@ -3,10 +3,9 @@ package users;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import products.BankProduct;
 import products.accounts.Account;
-import products.accounts.Deposit;
 import bank.Bank;
+import bank.IBank.depositType;
 
 public class Company extends Client {
 
@@ -28,7 +27,7 @@ public class Company extends Client {
 	}
 
 	public void openDeposit(Bank bank, String initiatorIban, double amount,
-			Deposit deposit) {
+			depositType type) {
 
 	}
 

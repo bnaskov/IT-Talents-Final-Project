@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import products.accounts.Account;
-import products.accounts.Deposit;
 import bank.Bank;
+import bank.IBank.depositType;
 
 public abstract class Client extends User implements IClient {
 
@@ -38,8 +38,8 @@ public abstract class Client extends User implements IClient {
 		Bank.getInstance().openAccount(this, initiatorIban, amount);
 	}
 
-	public void openDeposit(String initiatorIban, double amount, Deposit deposit) {
-		Bank.getInstance().openDeposit(this, initiatorIban, amount, deposit);
+	public void openDeposit(String initiatorIban, double amount, depositType type) {
+		Bank.getInstance().openDeposit(this, initiatorIban, amount, type);
 	}
 
 	public Map<String, HashMap<String, ArrayList<Account>>> getClientAccounts() {

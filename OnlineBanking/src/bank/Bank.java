@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import products.BankProduct;
 import products.accounts.Account;
 import products.accounts.CurrentAccountBGN;
-import products.accounts.Deposit;
 import products.accounts.DepositLongTerm;
 import products.accounts.DepositShortTerm;
 import users.Client;
@@ -18,7 +16,7 @@ public class Bank implements IBank {
 	private String name;
 	private String address;
 
-	private Map<String, IClient> users = new HashMap();
+	private Map<String, IClient> users = new HashMap<String, IClient>();
 	private Map<String, Account> allAccounts = new HashMap<String, Account>();
 
 	private static Bank instance = null;
@@ -103,20 +101,20 @@ public class Bank implements IBank {
 	}
 
 	public void openDeposit(IClient client, String initiatorIban,
-			double amount, Deposit deposit) {
+			double amount, depositType type) {
 		if(allAccounts.containsKey(initiatorIban)) {
 			if(allAccounts.get(initiatorIban).getAmount() >= amount) {
 				if(!client.getClientAccounts().containsKey("Deposit")) {
 					client.getClientAccounts().put("Deposit", new HashMap<String, ArrayList<Account>>());
 				}
-				if(deposit instanceof DepositLongTerm) {
+				if(type.equals("DepositLongTerm")) {
 					if(!client.getClientAccounts().get("Deposit").containsKey("DepositLongTerm")) {
 						client.getClientAccounts().get("CurrentAccount").put("DepositLongTerm", new ArrayList<Account>());
 					}
 					client.getClientAccounts().get("CurrentAccount").get("DepositLongTerm").add(new DepositLongTerm(amount));
 					allAccounts.get(initiatorIban).removeMoneyFromAccount(amount);
 				}
-				else if(deposit instanceof DepositShortTerm) {
+				else if(type.equals("DepositShortTerm")) {
 					if(!client.getClientAccounts().get("Deposit").containsKey("DepositShortTerm")) {
 						client.getClientAccounts().get("CurrentAccount").put("DepositShortTerm", new ArrayList<Account>());
 					}

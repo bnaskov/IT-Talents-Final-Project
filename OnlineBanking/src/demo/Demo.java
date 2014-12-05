@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import bank.Bank;
-import products.BankProduct;
 import products.accounts.Account;
 import products.accounts.DepositLongTerm;
 import products.accounts.DepositShortTerm;
