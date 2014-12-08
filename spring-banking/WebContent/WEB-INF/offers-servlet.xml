@@ -7,7 +7,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
 
-	<context:component-scan base-package="com.caveofprogramming.spring.web.controllers">
+	<context:component-scan base-package="com.banking.spring.web.controllers">
 	</context:component-scan>
 	<mvc:annotation-driven></mvc:annotation-driven>
 
@@ -17,7 +17,7 @@
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename"
-			value="com.caveofprogramming.spring.web.messages.messages"></property>
+			value="com.banking.spring.web.messages.messages"></property>
 	</bean>
 
 	<bean id="tilesViewResolver"

@@ -6,10 +6,30 @@
 <tiles-definitions>
 	<definition name="offers.base" template="/WEB-INF/templates/default.jsp">
 		<put-attribute name="includes" value=""></put-attribute>
-		<put-attribute name="title" value="Offers Homepage"></put-attribute>
+		<put-attribute name="title" value="Banking"></put-attribute>
 		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/content.jsp"></put-attribute>
 		<put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="bankaccounts" extends="offers.base">
+		<put-attribute name="title" value="Bank accounts"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/bankaccounts.jsp"></put-attribute>
+	</definition>	
+	
+	<definition name="openbankaccount" extends="offers.base">
+		<put-attribute name="title" value="Open account"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/openbankaccount.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="paybills" extends="offers.base">
+		<put-attribute name="title" value="Pay bills"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/paybills.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="transfermoneytouser" extends="offers.base">
+		<put-attribute name="title" value="Bank accounts"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/transfermoneytouser.jsp"></put-attribute>
 	</definition>
 
 	<definition name="home" extends="offers.base">
