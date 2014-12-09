@@ -1,9 +1,5 @@
 package com.banking.spring.web.dao;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -11,35 +7,23 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import com.banking.spring.web.validation.ValidEmail;
 
-@Entity
-@Table(name = "users")
 public class User {
 
-	@NotBlank(groups = { PersistenceValidationGroup.class,
-			FormValidationGroup.class })
-	@Size(min = 8, max = 15, groups = { PersistenceValidationGroup.class,
-			FormValidationGroup.class })
-	@Pattern(regexp = "^\\w{8,}$", groups = { PersistenceValidationGroup.class,
-			FormValidationGroup.class })
-	@Id
-	@Column(name = "username")
+	@NotBlank
+	@Size(min = 8, max = 15)
+	@Pattern(regexp = "^\\w{8,}$")
 	private String username;
 
-	@NotBlank(groups = { PersistenceValidationGroup.class,
-			FormValidationGroup.class })
-	@Pattern(regexp = "^\\S+$", groups = { PersistenceValidationGroup.class,
-			FormValidationGroup.class })
-	@Size(min = 8, max = 15, groups = { FormValidationGroup.class })
+	@NotBlank
+	@Pattern(regexp = "^\\S+$")
+	@Size(min = 8, max = 15)
 	private String password;
 
-	@ValidEmail(groups = { PersistenceValidationGroup.class,
-			FormValidationGroup.class })
+	@ValidEmail
 	private String email;
 
-	@NotBlank(groups = { PersistenceValidationGroup.class,
-			FormValidationGroup.class })
-	@Size(min = 8, max = 60, groups = { PersistenceValidationGroup.class,
-			FormValidationGroup.class })
+	@NotBlank
+	@Size(min = 8, max = 60)
 	private String name;
 
 	private boolean enabled = false;

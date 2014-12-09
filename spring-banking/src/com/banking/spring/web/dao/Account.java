@@ -1,34 +1,18 @@
 package com.banking.spring.web.dao;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
-@Entity
-@Table(name = "accounts")
 public class Account {
 
-	@Id
-	@GeneratedValue
 	private int id;
 
-	@Size(min = 22, max = 22, groups = { PersistenceValidationGroup.class,
-			FormValidationGroup.class })
-	@Column(name = "iban")
+	@Size(min = 22, max = 22)
 	private String iban;
 
 	@Min(0)
-	@Column(name = "amount")
 	private double amount;
 
-	@ManyToOne
-	@JoinColumn(name = "username")
 	private User user;
 
 	public Account() {
