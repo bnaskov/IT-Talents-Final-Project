@@ -4,48 +4,53 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.banking.spring.web.validation.ValidEmail;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
-	
-	@NotBlank(groups={PersistenceValidationGroup.class, FormValidationGroup.class})
-	@Size(min=8, max=15, groups={PersistenceValidationGroup.class, FormValidationGroup.class})
-	@Pattern(regexp="^\\w{8,}$", groups={PersistenceValidationGroup.class, FormValidationGroup.class})
+
+	@NotBlank(groups = { PersistenceValidationGroup.class,
+			FormValidationGroup.class })
+	@Size(min = 8, max = 15, groups = { PersistenceValidationGroup.class,
+			FormValidationGroup.class })
+	@Pattern(regexp = "^\\w{8,}$", groups = { PersistenceValidationGroup.class,
+			FormValidationGroup.class })
 	@Id
-	@Column(name="username")
+	@Column(name = "username")
 	private String username;
-	
-	@NotBlank(groups={PersistenceValidationGroup.class, FormValidationGroup.class})
-	@Pattern(regexp="^\\S+$", groups={PersistenceValidationGroup.class, FormValidationGroup.class})
-	@Size(min=8, max=15, groups={FormValidationGroup.class})
+
+	@NotBlank(groups = { PersistenceValidationGroup.class,
+			FormValidationGroup.class })
+	@Pattern(regexp = "^\\S+$", groups = { PersistenceValidationGroup.class,
+			FormValidationGroup.class })
+	@Size(min = 8, max = 15, groups = { FormValidationGroup.class })
 	private String password;
-	
-	@ValidEmail(groups={PersistenceValidationGroup.class, FormValidationGroup.class})
+
+	@ValidEmail(groups = { PersistenceValidationGroup.class,
+			FormValidationGroup.class })
 	private String email;
-	
-	@NotBlank(groups={PersistenceValidationGroup.class, FormValidationGroup.class})
-	@Size(min=8, max=60, groups={PersistenceValidationGroup.class, FormValidationGroup.class})
+
+	@NotBlank(groups = { PersistenceValidationGroup.class,
+			FormValidationGroup.class })
+	@Size(min = 8, max = 60, groups = { PersistenceValidationGroup.class,
+			FormValidationGroup.class })
 	private String name;
-	
+
 	private boolean enabled = false;
 	private String authority;
-	
-	
+
 	public User() {
-		
+
 	}
 
-	public User(String username, String name, String password, String email, boolean enabled,
-			String authority) {
+	public User(String username, String name, String password, String email,
+			boolean enabled, String authority) {
 		this.username = username;
 		this.name = name;
 		this.password = password;
@@ -156,8 +161,5 @@ public class User {
 				+ name + ", enabled=" + enabled + ", authority=" + authority
 				+ "]";
 	}
-
-	
-	
 
 }

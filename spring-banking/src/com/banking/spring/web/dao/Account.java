@@ -7,38 +7,39 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "offers")
-public class Offer {
+@Table(name = "accounts")
+public class Account {
 
 	@Id
 	@GeneratedValue
 	private int id;
 
-	@Size(min = 5, max = 255, groups = { PersistenceValidationGroup.class,
+	@Size(min = 22, max = 22, groups = { PersistenceValidationGroup.class,
 			FormValidationGroup.class })
-	@Column(name = "text")
-	private String text;
+	@Column(name = "iban")
+	private String iban;
+
+	@Min(0)
+	@Column(name = "amount")
+	private double amount;
 
 	@ManyToOne
 	@JoinColumn(name = "username")
 	private User user;
 
-	public Offer() {
+	public Account() {
 		this.user = new User();
 	}
 
-	public Offer(User user, String text) {
-		this.user = user;
-		this.text = text;
-	}
-
-	public Offer(int id, User user, String text) {
+	public Account(int id, User user, String iban, double amount) {
 		this.id = id;
 		this.user = user;
-		this.text = text;
+		this.iban = iban;
+		this.amount = amount;
 	}
 
 	public int getId() {
@@ -49,12 +50,20 @@ public class Offer {
 		this.id = id;
 	}
 
-	public String getText() {
-		return text;
+	public String getIban() {
+		return iban;
 	}
 
-	public void setText(String text) {
-		this.text = text;
+	public void setIban(String iban) {
+		this.iban = iban;
+	}
+
+	public double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(double amount) {
+		this.amount = amount;
 	}
 
 	public User getUser() {
@@ -65,15 +74,14 @@ public class Offer {
 		this.user = user;
 	}
 
-	public String getUsername() {
-		return user.getUsername();
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((text == null) ? 0 : text.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(amount);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((iban == null) ? 0 : iban.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
@@ -86,11 +94,14 @@ public class Offer {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Offer other = (Offer) obj;
-		if (text == null) {
-			if (other.text != null)
+		Account other = (Account) obj;
+		if (Double.doubleToLongBits(amount) != Double
+				.doubleToLongBits(other.amount))
+			return false;
+		if (iban == null) {
+			if (other.iban != null)
 				return false;
-		} else if (!text.equals(other.text))
+		} else if (!iban.equals(other.iban))
 			return false;
 		if (user == null) {
 			if (other.user != null)
@@ -102,7 +113,8 @@ public class Offer {
 
 	@Override
 	public String toString() {
-		return "Offer [id=" + id + ", text=" + text + ", user=" + user + "]";
+		return "Account [iban=" + iban + ", amount=" + amount + ", user="
+				+ user + "]";
 	}
 
 }
