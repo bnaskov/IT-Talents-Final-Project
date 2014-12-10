@@ -6,7 +6,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
-import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,70 +17,100 @@ import com.banking.spring.web.service.UsersService;
 
 @Controller
 public class LoginController {
-	
+
 	private UsersService usersService;
-	
+
 	@Autowired
 	public void setUsersService(UsersService usersService) {
 		this.usersService = usersService;
+	}
+
+	/*
+	 * Move it to AccountsController
+	 */
+	@RequestMapping("/bankaccounts")
+	public String BankAccounts() {
+		return "bankaccounts";
+	}
+
+	/*
+	 * Move it to AccountsController
+	 */
+	@RequestMapping("/openbankaccount")
+	public String openBankAccount() {
+		return "openbankaccount";
+	}
+
+	/*
+	 * Move it to AccountsController
+	 */
+	@RequestMapping("/transfermoneytouser")
+	public String transferMoneyToUser() {
+		return "transfermoneytouser";
+	}
+
+	/*
+	 * Move it to AccountsController
+	 */
+	@RequestMapping("/paybills")
+	public String payBills() {
+		return "paybills";
 	}
 
 	@RequestMapping("/login")
 	public String showLogin() {
 		return "login";
 	}
-	
+
 	@RequestMapping("/denied")
 	public String showDenied() {
 		return "denied";
 	}
-	
+
 	@RequestMapping("/admin")
 	public String showAdmin(Model model) {
-		
+
 		List<User> users = usersService.getAllUsers();
-		
+
 		model.addAttribute("users", users);
-		
+
 		return "admin";
 	}
-	
+
 	@RequestMapping("/loggedout")
 	public String showLoggedOut() {
 		return "loggedout";
 	}
-	
+
 	@RequestMapping("/newaccount")
 	public String showNewAccount(Model model) {
-		
+
 		model.addAttribute("user", new User());
 		return "newaccount";
 	}
-	
 
-	@RequestMapping(value="/createaccount", method=RequestMethod.POST)
+	@RequestMapping(value = "/createaccount", method = RequestMethod.POST)
 	public String createAccount(@Valid User user, BindingResult result) {
-		
-		if(result.hasErrors()) {
+
+		if (result.hasErrors()) {
 			return "newaccount";
 		}
-		
+
 		user.setAuthority("ROLE_USER");
 		user.setEnabled(true);
-		
-		if(usersService.exists(user.getUsername())) {
+
+		if (usersService.exists(user.getUsername())) {
 			result.rejectValue("username", "DuplicateKey.user.username");
 			return "newaccount";
 		}
-		
+
 		try {
 			usersService.create(user);
 		} catch (DuplicateKeyException e) {
 			result.rejectValue("username", "DuplicateKey.user.username");
 			return "newaccount";
 		}
-		
-		
+
 		return "accountcreated";
 	}
 }

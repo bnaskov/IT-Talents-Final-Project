@@ -18,6 +18,12 @@
 
 	<security:http use-expressions="true">
 		<security:intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')" />
+		
+		<security:intercept-url pattern="/bankaccounts" access="isAuthenticated()" />
+		<security:intercept-url pattern="/openbankaccount" access="isAuthenticated()" />
+		<security:intercept-url pattern="/transfermoneytouser" access="isAuthenticated()" />
+		<security:intercept-url pattern="/paybills" access="isAuthenticated()" />
+		
 		<security:intercept-url pattern="/createoffer" access="isAuthenticated()" />
 		<security:intercept-url pattern="/offerdeleted" access="isAuthenticated()" />
 		<security:intercept-url pattern="/docreate" access="isAuthenticated()" />
