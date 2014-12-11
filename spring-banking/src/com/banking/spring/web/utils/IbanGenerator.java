@@ -10,12 +10,11 @@ public class IbanGenerator {
 		iban.append("ITOB9300");
 
 		/*
-		 * Account identifier - 8 numbers
+		 * Account identifier - 10 numbers
 		 */
-		for (int i = 0; i < 2; i++) {
-			iban.append(RandomInRange.randIntRange(1000, 9999));
+		for (int i = 0; i < 10; i++) {
+			iban.append(RandomInRange.randIntRange(0, 9));
 		}
-		iban.append(RandomInRange.randIntRange(10, 99));
 
 		return iban.toString();
 	}

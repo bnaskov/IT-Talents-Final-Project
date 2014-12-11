@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.banking.spring.web.dao.Transaction;
 import com.banking.spring.web.service.AccountsService;
 import com.banking.spring.web.service.TransactionsService;
+import com.banking.spring.web.utils.IbanGenerator;
 
 @Controller
 public class TransactionsController {
@@ -57,6 +58,7 @@ public class TransactionsController {
 		transaction.setTime(now);
 
 		System.out.println(transaction);
+		System.out.println(IbanGenerator.generateIban());
 
 		return "paybills";
 	}

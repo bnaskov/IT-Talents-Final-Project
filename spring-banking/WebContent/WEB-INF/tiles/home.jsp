@@ -4,6 +4,8 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 
+<h1>HOME</h1>
+<!--  
 <table class="offers">
 	<tr>
 		<td>Name</td>
@@ -45,3 +47,4 @@
 		<a href="<c:url value='/admin'/>">Admin</a>
 	</p>
 </sec:authorize>
+-->
