@@ -13,15 +13,16 @@ public class Account {
 	@Min(0)
 	private double amount;
 
-	private User user;
+	// private User user;
+	private String username;
 
 	public Account() {
-		this.user = new User();
+
 	}
 
-	public Account(int id, User user, String iban, double amount) {
+	public Account(int id, String username, String iban, double amount) {
 		this.id = id;
-		this.user = user;
+		this.username = username;
 		this.iban = iban;
 		this.amount = amount;
 	}
@@ -50,12 +51,12 @@ public class Account {
 		this.amount = amount;
 	}
 
-	public User getUser() {
-		return user;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUsername(String name) {
+		this.username = username;
 	}
 
 	@Override
@@ -66,7 +67,8 @@ public class Account {
 		temp = Double.doubleToLongBits(amount);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((iban == null) ? 0 : iban.hashCode());
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		result = prime * result
+				+ ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
 
@@ -87,18 +89,18 @@ public class Account {
 				return false;
 		} else if (!iban.equals(other.iban))
 			return false;
-		if (user == null) {
-			if (other.user != null)
+		if (username == null) {
+			if (other.username != null)
 				return false;
-		} else if (!user.equals(other.user))
+		} else if (!username.equals(other.username))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Account [iban=" + iban + ", amount=" + amount + ", user="
-				+ user + "]";
+		return "Account [id=" + id + ", iban=" + iban + ", amount=" + amount
+				+ ", username=" + username + "]";
 	}
 
 }
