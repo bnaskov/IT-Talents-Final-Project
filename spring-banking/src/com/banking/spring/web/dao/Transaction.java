@@ -6,32 +6,39 @@ import java.sql.Time;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 public class Transaction {
 
 	private Date date;
 	private Time time;
+
+	@NotBlank
 	private String initiatorIban;
+
+	@NotBlank
 	private String recipientIban;
 
+	@NotBlank
 	@Size(min = 10, max = 100)
-	private String reasonForTransfer;
+	private String reason;
 
+	@NotBlank
 	@Min(10)
-	private double transferAmount;
+	private double amount;
 
 	public Transaction() {
 
 	}
 
 	public Transaction(Date date, Time time, String initiatorIban,
-			String recipientIban, String reasonForTransfer,
-			double transferAmount) {
+			String recipientIban, String reason, double transferAmount) {
 		this.date = date;
 		this.time = time;
 		this.initiatorIban = initiatorIban;
 		this.recipientIban = recipientIban;
-		this.reasonForTransfer = reasonForTransfer;
-		this.transferAmount = transferAmount;
+		this.reason = reason;
+		this.amount = transferAmount;
 	}
 
 	public Date getDate() {
@@ -66,20 +73,20 @@ public class Transaction {
 		this.recipientIban = recipientIban;
 	}
 
-	public String getReasonForTransfer() {
-		return reasonForTransfer;
+	public String getReason() {
+		return reason;
 	}
 
-	public void setReasonForTransfer(String reasonForTransfer) {
-		this.reasonForTransfer = reasonForTransfer;
+	public void setReason(String reason) {
+		this.reason = reason;
 	}
 
-	public double getTransferAmount() {
-		return transferAmount;
+	public double getAmount() {
+		return amount;
 	}
 
-	public void setTransferAmount(double transferAmount) {
-		this.transferAmount = transferAmount;
+	public void setAmount(double amount) {
+		this.amount = amount;
 	}
 
 	@Override
@@ -88,14 +95,11 @@ public class Transaction {
 		int result = 1;
 		result = prime * result
 				+ ((initiatorIban == null) ? 0 : initiatorIban.hashCode());
-		result = prime
-				* result
-				+ ((reasonForTransfer == null) ? 0 : reasonForTransfer
-						.hashCode());
+		result = prime * result + ((reason == null) ? 0 : reason.hashCode());
 		result = prime * result
 				+ ((recipientIban == null) ? 0 : recipientIban.hashCode());
 		long temp;
-		temp = Double.doubleToLongBits(transferAmount);
+		temp = Double.doubleToLongBits(amount);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
@@ -114,18 +118,18 @@ public class Transaction {
 				return false;
 		} else if (!initiatorIban.equals(other.initiatorIban))
 			return false;
-		if (reasonForTransfer == null) {
-			if (other.reasonForTransfer != null)
+		if (reason == null) {
+			if (other.reason != null)
 				return false;
-		} else if (!reasonForTransfer.equals(other.reasonForTransfer))
+		} else if (!reason.equals(other.reason))
 			return false;
 		if (recipientIban == null) {
 			if (other.recipientIban != null)
 				return false;
 		} else if (!recipientIban.equals(other.recipientIban))
 			return false;
-		if (Double.doubleToLongBits(transferAmount) != Double
-				.doubleToLongBits(other.transferAmount))
+		if (Double.doubleToLongBits(amount) != Double
+				.doubleToLongBits(other.amount))
 			return false;
 		return true;
 	}
@@ -134,8 +138,8 @@ public class Transaction {
 	public String toString() {
 		return "Transaction [date=" + date + ", time=" + time
 				+ ", initiatorIban=" + initiatorIban + ", recipientIban="
-				+ recipientIban + ", reasonForTransfer=" + reasonForTransfer
-				+ ", transferAmount=" + transferAmount + "]";
+				+ recipientIban + ", reasonForTransfer=" + reason + ", amount="
+				+ amount + "]";
 	}
 
 }

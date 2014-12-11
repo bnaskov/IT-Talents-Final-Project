@@ -11,15 +11,22 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.banking.spring.web.dao.Account;
 import com.banking.spring.web.service.AccountsService;
+import com.banking.spring.web.service.TransactionsService;
 
 @Controller
 public class AccountsController {
 
 	private AccountsService accountsService;
+	private TransactionsService transactionsService;
 
 	@Autowired
 	public void setAccountsService(AccountsService accountsService) {
 		this.accountsService = accountsService;
+	}
+
+	@Autowired
+	public void setTransactionsService(TransactionsService transactionsService) {
+		this.transactionsService = transactionsService;
 	}
 
 	@RequestMapping("/bankaccounts")
@@ -57,4 +64,5 @@ public class AccountsController {
 
 		return "paybills";
 	}
+
 }
