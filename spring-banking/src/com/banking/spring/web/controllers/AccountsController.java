@@ -32,4 +32,36 @@ public class AccountsController {
 
 		return "bankaccounts";
 	}
+
+	/*
+	 * Move it to AccountsController
+	 */
+	// @RequestMapping("/bankaccounts")
+	// public String BankAccounts() {
+	// return "bankaccounts";
+	// }
+
+	/*
+	 * Move it to AccountsController
+	 */
+	@RequestMapping("/openbankaccount")
+	public String openBankAccount() {
+		return "openbankaccount";
+	}
+
+	/*
+	 * Move it to AccountsController
+	 */
+	@RequestMapping("/transfermoneytouser")
+	public String transferMoneyToUser() {
+		return "transfermoneytouser";
+	}
+
+	/*
+	 * Move it to AccountsController
+	 */
+	@RequestMapping("/paybills")
+	public String payBills() {
+		return "paybills";
+	}
 }
