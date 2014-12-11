@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.banking.spring.web.dao.Account;
 import com.banking.spring.web.service.AccountsService;
@@ -36,32 +37,24 @@ public class AccountsController {
 	/*
 	 * Move it to AccountsController
 	 */
-	// @RequestMapping("/bankaccounts")
-	// public String BankAccounts() {
-	// return "bankaccounts";
-	// }
-
-	/*
-	 * Move it to AccountsController
-	 */
 	@RequestMapping("/openbankaccount")
 	public String openBankAccount() {
 		return "openbankaccount";
 	}
 
-	/*
-	 * Move it to AccountsController
-	 */
 	@RequestMapping("/transfermoneytouser")
 	public String transferMoneyToUser() {
 		return "transfermoneytouser";
 	}
 
-	/*
-	 * Move it to AccountsController
-	 */
-	@RequestMapping("/paybills")
-	public String payBills() {
+	@RequestMapping(value = "/paybills", method = RequestMethod.GET)
+	public String payBills(Model model, Principal principal) {
+		String username = principal.getName();
+
+		List<Account> accounts = accountsService.getAccounts(username);
+
+		model.addAttribute("accounts", accounts);
+
 		return "paybills";
 	}
 }
