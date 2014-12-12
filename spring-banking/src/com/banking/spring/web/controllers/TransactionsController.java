@@ -1,5 +1,7 @@
 package com.banking.spring.web.controllers;
 
+import java.security.Principal;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,6 +90,43 @@ public class TransactionsController {
 
 		System.out.println(transaction);
 		System.out.println(IbanGenerator.generateIban());
+
+		return "transfercompleted";
+	}
+
+	@RequestMapping(value = "/openbankaccount", method = RequestMethod.POST)
+	public String openBankAccount(@Valid Transaction transaction,
+			BindingResult result, Principal principal) {
+
+		if (result.hasErrors()) {
+			return "home";
+		}
+
+		System.out.println(transaction);
+
+		if (accountsService.exists(transaction.getRecipientIban())) {
+			String recipientIban = null;
+			while (true) {
+				recipientIban = IbanGenerator.generateIban();
+				if (!accountsService.exists(recipientIban)) {
+					transaction.setRecipientIban(recipientIban);
+					break;
+				}
+			}
+		}
+
+		System.out.println("Hello");
+
+		if (transaction.getAmount() > transactionsService
+				.getAmountForIban(transaction.getInitiatorIban())) {
+			return "insufficientfunds";
+		}
+		String username = principal.getName();
+
+		transaction.setDate(new DateTime().getCurrentDate());
+		transaction.setTime(new DateTime().getCurrentTime());
+
+		transactionsService.createAccount(transaction, username);
 
 		return "transfercompleted";
 	}

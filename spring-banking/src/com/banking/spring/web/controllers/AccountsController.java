@@ -41,11 +41,14 @@ public class AccountsController {
 		return "bankaccounts";
 	}
 
-	/*
-	 * Move it to AccountsController
-	 */
-	@RequestMapping("/openbankaccount")
-	public String openBankAccount() {
+	@RequestMapping(value = "/openbankaccount", method = RequestMethod.GET)
+	public String openBankAccount(Model model, Principal principal) {
+		String username = principal.getName();
+
+		List<Account> accounts = accountsService.getAccounts(username);
+
+		model.addAttribute("accounts", accounts);
+
 		return "openbankaccount";
 	}
 

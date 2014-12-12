@@ -120,4 +120,44 @@ public class TransactionsDao {
 
 	}
 
+	@Transactional
+	public void createAccount(Transaction transaction, String username) {
+		MapSqlParameterSource transactionParams = new MapSqlParameterSource();
+
+		transactionParams.addValue("date", transaction.getDate());
+		transactionParams.addValue("time", transaction.getTime());
+		transactionParams.addValue("initiatoriban",
+				transaction.getInitiatorIban());
+		transactionParams.addValue("recipientiban",
+				transaction.getRecipientIban());
+		transactionParams.addValue("amount", transaction.getAmount());
+		transactionParams.addValue("reason", transaction.getReason());
+
+		double amountBeforeTransaction = getAmountForIban(transaction
+				.getInitiatorIban());
+
+		MapSqlParameterSource initiatorAccount = new MapSqlParameterSource();
+		initiatorAccount.addValue("amountBefore", amountBeforeTransaction);
+		initiatorAccount.addValue("amount", transaction.getAmount());
+		initiatorAccount.addValue("iban", transaction.getInitiatorIban());
+
+		MapSqlParameterSource newAccount = new MapSqlParameterSource();
+		newAccount.addValue("iban", transaction.getRecipientIban());
+		newAccount.addValue("amount", transaction.getAmount());
+		newAccount.addValue("username", username);
+
+		jdbc.update(
+				"update accounts set amount=(:amountBefore-:amount) where iban=:iban",
+				initiatorAccount);
+
+		jdbc.update(
+				"insert into accounts (iban, amount, username) values (:iban, :amount, :username)",
+				newAccount);
+
+		jdbc.update(
+				"insert into transactions (date, time, initiatoriban, recipientiban, amount, reason) values (:date, :time, :initiatoriban, :recipientiban, :amount, :reason)",
+				transactionParams);
+
+	}
+
 }

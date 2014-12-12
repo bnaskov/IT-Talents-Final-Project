@@ -27,4 +27,8 @@ public class TransactionsService {
 	public void createBankClientTransaction(Transaction transaction) {
 		transactionsDao.createBankClientTransaction(transaction);
 	}
+
+	public void createAccount(Transaction transaction, String username) {
+		transactionsDao.createAccount(transaction, username);
+	}
 }
