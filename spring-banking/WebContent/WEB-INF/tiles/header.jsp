@@ -32,6 +32,8 @@
 					bills</a></li>
 			<li><a class="transfer_money_to_user"
 				href="<c:url value='/transfermoneytouser'/>">Transfer money</a></li>
+			<li><a class="transactions"
+				href="<c:url value='/transactions'/>">Transactions</a></li>
 		</ul>
 	</nav>
 </sec:authorize>

@@ -23,9 +23,9 @@
 		<security:intercept-url pattern="/openbankaccount" access="isAuthenticated()" />
 		<security:intercept-url pattern="/transfermoneytouser" access="isAuthenticated()" />
 		<security:intercept-url pattern="/paybills" access="isAuthenticated()" />
+		<security:intercept-url pattern="/transactions" access="isAuthenticated()" />
 		<security:intercept-url pattern="/transfercompleted" access="isAuthenticated()" />
 		<security:intercept-url pattern="/insufficientfunds" access="isAuthenticated()" />
-		
 		
 		<security:intercept-url pattern="/createoffer" access="isAuthenticated()" />
 		<security:intercept-url pattern="/offerdeleted" access="isAuthenticated()" />

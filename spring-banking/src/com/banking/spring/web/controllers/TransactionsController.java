@@ -32,6 +32,12 @@ public class TransactionsController {
 		this.transactionsService = transactionsService;
 	}
 
+	@RequestMapping(value = "/transactions", method = RequestMethod.GET)
+	public String getTransactionHistory() {
+
+		return "transactions";
+	}
+
 	@RequestMapping(value = "/paybills", method = RequestMethod.POST)
 	public String payBillz(@Valid Transaction transaction, BindingResult result) {
 

@@ -32,6 +32,11 @@
 		<put-attribute name="content" value="/WEB-INF/tiles/paybills.jsp"></put-attribute>
 	</definition>	
 	
+	<definition name="transactions" extends="banking.base">
+		<put-attribute name="title" value="Transaction history"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/transactions.jsp"></put-attribute>
+	</definition>	
+	
 	<definition name="insufficientfunds" extends="banking.base">
 		<put-attribute name="title" value="Insufficient funds"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/insufficientfunds.jsp"></put-attribute>
