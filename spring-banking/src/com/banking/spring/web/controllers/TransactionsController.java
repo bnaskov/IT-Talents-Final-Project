@@ -102,8 +102,6 @@ public class TransactionsController {
 			return "home";
 		}
 
-		System.out.println(transaction);
-
 		if (accountsService.exists(transaction.getRecipientIban())) {
 			String recipientIban = null;
 			while (true) {
@@ -114,8 +112,6 @@ public class TransactionsController {
 				}
 			}
 		}
-
-		System.out.println("Hello");
 
 		if (transaction.getAmount() > transactionsService
 				.getAmountForIban(transaction.getInitiatorIban())) {
