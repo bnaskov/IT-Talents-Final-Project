@@ -2,9 +2,11 @@ package com.banking.spring.web.controllers;
 
 import java.util.Calendar;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -30,7 +32,14 @@ public class TransactionsController {
 	}
 
 	@RequestMapping(value = "/paybills", method = RequestMethod.POST)
-	public String payBillz(Model model, Transaction transaction) {
+	public String payBillz(@Valid Transaction transaction, BindingResult result) {
+
+		/*
+		 * / EDIT - Should return some error page!!!
+		 */
+		if (result.hasErrors()) {
+			return "home";
+		}
 
 		// transactionsService.createTransaction(transaction);
 
@@ -56,6 +65,8 @@ public class TransactionsController {
 
 		transaction.setDate(date);
 		transaction.setTime(now);
+
+		transactionsService.create(transaction);
 
 		System.out.println(transaction);
 		System.out.println(IbanGenerator.generateIban());

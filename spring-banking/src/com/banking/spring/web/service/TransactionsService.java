@@ -16,8 +16,8 @@ public class TransactionsService {
 		this.transactionsDao = transactionsDao;
 	}
 
-	public void createTransaction(Transaction transaction) {
-		transactionsDao.createTransaction(transaction);
+	public void create(Transaction transaction) {
+		transactionsDao.create(transaction);
 	}
 
 }

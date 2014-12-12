@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.sql.Time;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -23,7 +24,7 @@ public class Transaction {
 	@Size(min = 10, max = 100)
 	private String reason;
 
-	@NotBlank
+	@NotNull
 	@Min(10)
 	private double amount;
 
