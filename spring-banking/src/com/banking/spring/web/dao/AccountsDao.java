@@ -27,7 +27,6 @@ public class AccountsDao {
 	}
 
 	public boolean exists(String recipientIban) {
-		// TODO Auto-generated method stub
 		return jdbc
 				.queryForObject(
 						"select count(*) from accounts where iban=:iban",

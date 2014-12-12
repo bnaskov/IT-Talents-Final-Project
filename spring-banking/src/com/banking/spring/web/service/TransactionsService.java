@@ -16,6 +16,10 @@ public class TransactionsService {
 		this.transactionsDao = transactionsDao;
 	}
 
+	public double getAmountForIban(String iban) {
+		return transactionsDao.getAmountForIban(iban);
+	}
+
 	public void create(Transaction transaction) {
 		transactionsDao.create(transaction);
 	}

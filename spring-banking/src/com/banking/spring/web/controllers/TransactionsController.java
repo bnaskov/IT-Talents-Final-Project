@@ -40,6 +40,11 @@ public class TransactionsController {
 			return "home";
 		}
 
+		if (transaction.getAmount() > transactionsService
+				.getAmountForIban(transaction.getInitiatorIban())) {
+			return "insufficientfunds";
+		}
+
 		transaction.setDate(new DateTime().getCurrentDate());
 		transaction.setTime(new DateTime().getCurrentTime());
 
@@ -48,7 +53,7 @@ public class TransactionsController {
 		System.out.println(transaction);
 		System.out.println(IbanGenerator.generateIban());
 
-		return "paybills";
+		return "transfercompleted";
 	}
 
 	@RequestMapping(value = "/transfermoneytouser", method = RequestMethod.POST)
@@ -60,6 +65,11 @@ public class TransactionsController {
 		 */
 		if (result.hasErrors()) {
 			return "home";
+		}
+
+		if (transaction.getAmount() > transactionsService
+				.getAmountForIban(transaction.getInitiatorIban())) {
+			return "insufficientfunds";
 		}
 
 		transaction.setDate(new DateTime().getCurrentDate());
@@ -79,7 +89,7 @@ public class TransactionsController {
 		System.out.println(transaction);
 		System.out.println(IbanGenerator.generateIban());
 
-		return "transfermoneytouser";
+		return "transfercompleted";
 	}
 
 }
