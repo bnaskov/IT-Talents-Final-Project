@@ -40,6 +40,51 @@ public class TransactionsDao {
 	}
 
 	@Transactional
+	public void createBankClientTransaction(Transaction transaction) {
+		MapSqlParameterSource transactionParams = new MapSqlParameterSource();
+
+		transactionParams.addValue("date", transaction.getDate());
+		transactionParams.addValue("time", transaction.getTime());
+		transactionParams.addValue("initiatoriban",
+				transaction.getInitiatorIban());
+		transactionParams.addValue("recipientiban",
+				transaction.getRecipientIban());
+		transactionParams.addValue("amount", transaction.getAmount());
+		transactionParams.addValue("reason", transaction.getReason());
+
+		Transaction initiatorAmountBeforeTransaction = getAmountFromIban(
+				transaction.getInitiatorIban()).get(0);
+
+		MapSqlParameterSource initiatorAccount = new MapSqlParameterSource();
+		initiatorAccount.addValue("amountBefore",
+				initiatorAmountBeforeTransaction.getAmount());
+		initiatorAccount.addValue("amount", transaction.getAmount());
+		initiatorAccount.addValue("iban", transaction.getInitiatorIban());
+
+		Transaction recipientAmountBeforeTransaction = getAmountFromIban(
+				transaction.getRecipientIban()).get(0);
+
+		MapSqlParameterSource recipientAccount = new MapSqlParameterSource();
+		recipientAccount.addValue("amountBefore",
+				recipientAmountBeforeTransaction.getAmount());
+		recipientAccount.addValue("amount", transaction.getAmount());
+		recipientAccount.addValue("iban", transaction.getRecipientIban());
+
+		jdbc.update(
+				"update accounts set amount=(:amountBefore-:amount) where iban=:iban",
+				initiatorAccount);
+
+		jdbc.update(
+				"update accounts set amount=(:amountBefore+:amount) where iban=:iban",
+				recipientAccount);
+
+		jdbc.update(
+				"insert into transactions (date, time, initiatoriban, recipientiban, amount, reason) values (:date, :time, :initiatoriban, :recipientiban, :amount, :reason)",
+				transactionParams);
+
+	}
+
+	@Transactional
 	public void create(Transaction transaction) {
 
 		MapSqlParameterSource transactionParams = new MapSqlParameterSource();
@@ -53,11 +98,12 @@ public class TransactionsDao {
 		transactionParams.addValue("amount", transaction.getAmount());
 		transactionParams.addValue("reason", transaction.getReason());
 
-		Transaction tempTransaction = getAmountFromIban(
+		Transaction amountBeforeTransaction = getAmountFromIban(
 				transaction.getInitiatorIban()).get(0);
 
 		MapSqlParameterSource initiatorAccount = new MapSqlParameterSource();
-		initiatorAccount.addValue("amountBefore", tempTransaction.getAmount());
+		initiatorAccount.addValue("amountBefore",
+				amountBeforeTransaction.getAmount());
 		initiatorAccount.addValue("amount", transaction.getAmount());
 		initiatorAccount.addValue("iban", transaction.getInitiatorIban());
 
@@ -70,4 +116,5 @@ public class TransactionsDao {
 				transactionParams);
 
 	}
+
 }

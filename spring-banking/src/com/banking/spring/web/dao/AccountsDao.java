@@ -25,4 +25,13 @@ public class AccountsDao {
 				new MapSqlParameterSource("username", username),
 				new AccountRowMapper());
 	}
+
+	public boolean exists(String recipientIban) {
+		// TODO Auto-generated method stub
+		return jdbc
+				.queryForObject(
+						"select count(*) from accounts where iban=:iban",
+						new MapSqlParameterSource("iban", recipientIban),
+						Integer.class) > 0;
+	}
 }

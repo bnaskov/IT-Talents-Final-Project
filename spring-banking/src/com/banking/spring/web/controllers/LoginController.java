@@ -1,7 +1,5 @@
 package com.banking.spring.web.controllers;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,15 +33,15 @@ public class LoginController {
 		return "denied";
 	}
 
-	@RequestMapping("/admin")
-	public String showAdmin(Model model) {
-
-		List<User> users = usersService.getAllUsers();
-
-		model.addAttribute("users", users);
-
-		return "admin";
-	}
+	// @RequestMapping("/admin")
+	// public String showAdmin(Model model) {
+	//
+	// List<User> users = usersService.getAllUsers();
+	//
+	// model.addAttribute("users", users);
+	//
+	// return "admin";
+	// }
 
 	@RequestMapping("/loggedout")
 	public String showLoggedOut() {

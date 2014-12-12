@@ -28,4 +28,9 @@ public class AccountsService {
 
 		return accounts;
 	}
+
+	public boolean exists(String recipientIban) {
+		return accountsDao.exists(recipientIban);
+	}
+
 }

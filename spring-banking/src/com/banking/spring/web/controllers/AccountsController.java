@@ -49,8 +49,14 @@ public class AccountsController {
 		return "openbankaccount";
 	}
 
-	@RequestMapping("/transfermoneytouser")
-	public String transferMoneyToUser() {
+	@RequestMapping(value = "/transfermoneytouser", method = RequestMethod.GET)
+	public String transferMoneyToUser(Model model, Principal principal) {
+		String username = principal.getName();
+
+		List<Account> accounts = accountsService.getAccounts(username);
+
+		model.addAttribute("accounts", accounts);
+
 		return "transfermoneytouser";
 	}
 

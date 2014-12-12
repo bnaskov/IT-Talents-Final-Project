@@ -17,7 +17,7 @@
 <form method="post" action="${pageContext.request.contextPath}/paybills">
 	<table>
 		<tr>
-			<td>Yout IBAN</td>
+			<td>Your IBAN</td>
 			<td><select name="initiatorIban">
 					<c:forEach var="account" items="${accounts}">
 						<option value="${account.iban}">${account.iban}</option>
@@ -40,43 +40,5 @@
 			<td colspan="2"><input type="submit" value="Transfer"></td>
 		</tr>
 	</table>
-	
 
-
-	<!--  <select name="initiatorIban">
-		<c:forEach var="account" items="${accounts}">
-			<option value="${account.iban}">${account.iban}</option>
-		</c:forEach>
-	</select> <input type="text" name="recipientIban" /> <input type="text"
-		name="amount" /> <input type="text" name="reason" /> <input
-		type="submit" value="Transfer">
-		-->
 </form>
-
-<!--
-<sf:form method="post"
-	action="${pageContext.request.contextPath}/paybills"
-	commandName="transaction">
-
-	<table class="formtable">
-		<tr>
-			<td>Your accounts</td>
-			<td>Recipient account</td>
-			<td>Amount</td>
-			<td>Reason</td>
-		</tr>
-		<tr>
-			<td><sf:select path="initiatorIban">
-					<c:forEach var="account" items="${accounts}">
-						<option value="${account.iban}">${account.iban}</option>
-					</c:forEach>
-			</sf:select></td>
-			<td><sf:text class="control" path="recipientIban" name="recipientIban"></sf:text></td>
-			<td><sf:text class="control" path="amount" name="amount"></sf:text></td>
-			<td><sf:text class="control" path="reason" name="reason"></sf:text></td>
-			<td><input class="control" value="Send money" type="submit" /></td>
-		</tr>
-	</table>
-
-</sf:form>
--->

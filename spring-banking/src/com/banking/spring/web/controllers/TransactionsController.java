@@ -1,7 +1,5 @@
 package com.banking.spring.web.controllers;
 
-import java.util.Calendar;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.banking.spring.web.dao.Transaction;
 import com.banking.spring.web.service.AccountsService;
 import com.banking.spring.web.service.TransactionsService;
+import com.banking.spring.web.utils.DateTime;
 import com.banking.spring.web.utils.IbanGenerator;
 
 @Controller
@@ -41,30 +40,8 @@ public class TransactionsController {
 			return "home";
 		}
 
-		// transactionsService.createTransaction(transaction);
-
-		/*
-		 * // create a java calendar instance Calendar calendar =
-		 * Calendar.getInstance();
-		 * 
-		 * // get a java date (java.util.Date) from the Calendar instance. //
-		 * this java date will represent the current date, or "now".
-		 * java.util.Date currentDate = calendar.getTime();
-		 * 
-		 * // now, create a java.sql.Date from the java.util.Date java.sql.Date
-		 * date = new java.sql.Date(currentDate.getTime());
-		 */
-
-		java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime()
-				.getTime());
-
-		Calendar cal = Calendar.getInstance();
-		java.sql.Time now = java.sql.Time.valueOf(cal.get(Calendar.HOUR_OF_DAY)
-				+ ":" + cal.get(Calendar.MINUTE) + ":"
-				+ cal.get(Calendar.SECOND));
-
-		transaction.setDate(date);
-		transaction.setTime(now);
+		transaction.setDate(new DateTime().getCurrentDate());
+		transaction.setTime(new DateTime().getCurrentTime());
 
 		transactionsService.create(transaction);
 
@@ -72,6 +49,37 @@ public class TransactionsController {
 		System.out.println(IbanGenerator.generateIban());
 
 		return "paybills";
+	}
+
+	@RequestMapping(value = "/transfermoneytouser", method = RequestMethod.POST)
+	public String transferMoneyToUser(@Valid Transaction transaction,
+			BindingResult result) {
+
+		/*
+		 * / EDIT - Should return some error page!!!
+		 */
+		if (result.hasErrors()) {
+			return "home";
+		}
+
+		transaction.setDate(new DateTime().getCurrentDate());
+		transaction.setTime(new DateTime().getCurrentTime());
+
+		/*
+		 * / EDIT - Should return some error page!!!
+		 */
+		if (!accountsService.exists(transaction.getRecipientIban())) {
+			result.rejectValue("recipientIban",
+					"NoneExistingIban.transaction.recipientIban");
+			return "home";
+		}
+
+		transactionsService.createBankClientTransaction(transaction);
+
+		System.out.println(transaction);
+		System.out.println(IbanGenerator.generateIban());
+
+		return "transfermoneytouser";
 	}
 
 }

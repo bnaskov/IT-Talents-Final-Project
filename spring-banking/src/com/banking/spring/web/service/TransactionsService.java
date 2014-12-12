@@ -20,4 +20,7 @@ public class TransactionsService {
 		transactionsDao.create(transaction);
 	}
 
+	public void createBankClientTransaction(Transaction transaction) {
+		transactionsDao.createBankClientTransaction(transaction);
+	}
 }
