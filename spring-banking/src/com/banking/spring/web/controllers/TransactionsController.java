@@ -32,7 +32,7 @@ public class TransactionsController {
 		this.transactionsService = transactionsService;
 	}
 
-	@RequestMapping(value = "/transactions", method = RequestMethod.GET)
+	@RequestMapping(value = "/transactions", method = RequestMethod.POST)
 	public String getTransactionHistory() {
 
 		return "transactions";

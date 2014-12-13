@@ -74,4 +74,15 @@ public class AccountsController {
 		return "paybills";
 	}
 
+	@RequestMapping(value = "/transactions", method = RequestMethod.GET)
+	public String getTransactions(Model model, Principal principal) {
+		String username = principal.getName();
+
+		List<Account> accounts = accountsService.getAccounts(username);
+
+		model.addAttribute("accounts", accounts);
+
+		return "transactions";
+	}
+
 }

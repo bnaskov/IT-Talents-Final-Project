@@ -1,5 +1,4 @@
 <%@page import="com.banking.spring.web.utils.IbanGenerator"%>
-<%@page import="com.banking.spring.web.utils.Validation"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -8,7 +7,8 @@
 
 <h1>Transfer money</h1>
 
-<form method="post" action="${pageContext.request.contextPath}/openbankaccount">
+<form method="post"
+	action="${pageContext.request.contextPath}/openbankaccount">
 	<table>
 		<tr>
 			<td>Your IBAN</td>
@@ -16,7 +16,7 @@
 					<c:forEach var="account" items="${accounts}">
 						<option value="${account.iban}">${account.iban}</option>
 					</c:forEach>
-			</select></td>			
+			</select></td>
 		</tr>
 		<tr>
 			<td>Other's IBAN</td>
