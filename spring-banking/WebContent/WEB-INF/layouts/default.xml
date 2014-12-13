@@ -22,6 +22,11 @@
 		<put-attribute name="content" value="/WEB-INF/tiles/openbankaccount.jsp"></put-attribute>
 	</definition>
 	
+	<definition name="invalidinput" extends="banking.base">
+		<put-attribute name="title" value="Invalid input"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/invalidinput.jsp"></put-attribute>
+	</definition>	
+	
 	<definition name="transfermoneytouser" extends="banking.base">
 		<put-attribute name="title" value="Transfer money to user"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/transfermoneytouser.jsp"></put-attribute>

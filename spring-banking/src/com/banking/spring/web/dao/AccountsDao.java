@@ -21,7 +21,7 @@ public class AccountsDao {
 
 	public List<Account> getAccounts(String username) {
 
-		return jdbc.query("select * from accounts where username=:username",
+		return jdbc.query("SELECT * FROM accounts WHERE username=:username",
 				new MapSqlParameterSource("username", username),
 				new AccountRowMapper());
 	}
@@ -29,7 +29,7 @@ public class AccountsDao {
 	public boolean exists(String recipientIban) {
 		return jdbc
 				.queryForObject(
-						"select count(*) from accounts where iban=:iban",
+						"SELECT count(*) FROM accounts WHERE iban=:iban",
 						new MapSqlParameterSource("iban", recipientIban),
 						Integer.class) > 0;
 	}

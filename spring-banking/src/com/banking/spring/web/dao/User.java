@@ -3,40 +3,38 @@ package com.banking.spring.web.dao;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.banking.spring.web.validation.ValidEmail;
 
 public class User {
-	
+
 	@NotBlank
-	@Size(min=8, max=15)
-	@Pattern(regexp="^\\w{8,}$")
+	@Size(min = 8, max = 15)
+	@Pattern(regexp = "^\\w{8,}$")
 	private String username;
-	
+
 	@NotBlank
-	@Pattern(regexp="^\\S+$")
-	@Size(min=8, max=15)
+	@Pattern(regexp = "^\\S+$")
+	@Size(min = 8, max = 15)
 	private String password;
-	
+
 	@ValidEmail
 	private String email;
-	
+
 	@NotBlank
-	@Size(min=8, max=60)
+	@Size(min = 8, max = 60)
 	private String name;
-	
+
 	private boolean enabled = false;
 	private String authority;
-	
-	
+
 	public User() {
-		
+
 	}
 
-	public User(String username, String name, String password, String email, boolean enabled,
-			String authority) {
+	public User(String username, String name, String password, String email,
+			boolean enabled, String authority) {
 		this.username = username;
 		this.name = name;
 		this.password = password;
@@ -147,8 +145,5 @@ public class User {
 				+ name + ", enabled=" + enabled + ", authority=" + authority
 				+ "]";
 	}
-
-	
-	
 
 }

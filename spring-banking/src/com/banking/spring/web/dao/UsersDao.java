@@ -43,17 +43,17 @@ public class UsersDao {
 		paramAccount.addValue("username", user.getUsername());
 
 		jdbc.update(
-				"insert into users (username, name, password, email, enabled, authority) values (:username, :name, :password, :email, :enabled, :authority)",
+				"INSERT INTO users (username, name, password, email, enabled, authority) VALUES (:username, :name, :password, :email, :enabled, :authority)",
 				params);
 
 		jdbc.update(
-				"insert into accounts (iban, amount, username) values (:iban, :amount, :username)",
+				"INSERT INTO accounts (iban, amount, username) VALUES (:iban, :amount, :username)",
 				paramAccount);
 	}
 
 	public boolean exists(String username) {
 		return jdbc.queryForObject(
-				"select count(*) from users where username=:username",
+				"SELECT count(*) FROM users WHERE username=:username",
 				new MapSqlParameterSource("username", username), Integer.class) > 0;
 	}
 

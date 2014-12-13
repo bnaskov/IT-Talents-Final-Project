@@ -13,7 +13,6 @@ public class Account {
 	@Min(0)
 	private double amount;
 
-	// private User user;
 	private String username;
 
 	public Account() {

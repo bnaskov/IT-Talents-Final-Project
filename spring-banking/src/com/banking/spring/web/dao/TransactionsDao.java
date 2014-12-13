@@ -26,7 +26,7 @@ public class TransactionsDao {
 	public double getAmountForIban(String iban) {
 		List<Transaction> transacts = null;
 
-		transacts = jdbc.query("select amount from accounts where iban=:iban",
+		transacts = jdbc.query("SELECT amount FROM accounts WHERE iban=:iban",
 				new MapSqlParameterSource("iban", iban),
 				new RowMapper<Transaction>() {
 
@@ -75,15 +75,15 @@ public class TransactionsDao {
 		recipientAccount.addValue("iban", transaction.getRecipientIban());
 
 		jdbc.update(
-				"update accounts set amount=(:amountBefore-:amount) where iban=:iban",
+				"UPDATE accounts SET amount=(:amountBefore-:amount) WHERE iban=:iban",
 				initiatorAccount);
 
 		jdbc.update(
-				"update accounts set amount=(:amountBefore+:amount) where iban=:iban",
+				"UPDATE accounts SET amount=(:amountBefore+:amount) WHERE iban=:iban",
 				recipientAccount);
 
 		jdbc.update(
-				"insert into transactions (date, time, initiatoriban, recipientiban, amount, reason) values (:date, :time, :initiatoriban, :recipientiban, :amount, :reason)",
+				"INSERT INTO transactions (date, time, initiatoriban, recipientiban, amount, reason) VALUES (:date, :time, :initiatoriban, :recipientiban, :amount, :reason)",
 				transactionParams);
 
 	}
@@ -111,11 +111,11 @@ public class TransactionsDao {
 		initiatorAccount.addValue("iban", transaction.getInitiatorIban());
 
 		jdbc.update(
-				"update accounts set amount=(:amountBefore-:amount) where iban=:iban",
+				"UPDATE accounts SET amount=(:amountBefore-:amount) WHERE iban=:iban",
 				initiatorAccount);
 
 		jdbc.update(
-				"insert into transactions (date, time, initiatoriban, recipientiban, amount, reason) values (:date, :time, :initiatoriban, :recipientiban, :amount, :reason)",
+				"INSERT INTO transactions (date, time, initiatoriban, recipientiban, amount, reason) VALUES (:date, :time, :initiatoriban, :recipientiban, :amount, :reason)",
 				transactionParams);
 
 	}
@@ -147,15 +147,15 @@ public class TransactionsDao {
 		newAccount.addValue("username", username);
 
 		jdbc.update(
-				"update accounts set amount=(:amountBefore-:amount) where iban=:iban",
+				"UPDATE accounts SET amount=(:amountBefore-:amount) WHERE iban=:iban",
 				initiatorAccount);
 
 		jdbc.update(
-				"insert into accounts (iban, amount, username) values (:iban, :amount, :username)",
+				"INSERT INTO accounts (iban, amount, username) VALUES (:iban, :amount, :username)",
 				newAccount);
 
 		jdbc.update(
-				"insert into transactions (date, time, initiatoriban, recipientiban, amount, reason) values (:date, :time, :initiatoriban, :recipientiban, :amount, :reason)",
+				"INSERT INTO transactions (date, time, initiatoriban, recipientiban, amount, reason) VALUES (:date, :time, :initiatoriban, :recipientiban, :amount, :reason)",
 				transactionParams);
 
 	}

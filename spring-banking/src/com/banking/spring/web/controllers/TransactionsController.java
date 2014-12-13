@@ -37,11 +37,8 @@ public class TransactionsController {
 	@RequestMapping(value = "/paybills", method = RequestMethod.POST)
 	public String payBillz(@Valid Transaction transaction, BindingResult result) {
 
-		/*
-		 * / EDIT - Should return some error page!!!
-		 */
 		if (result.hasErrors()) {
-			return "home";
+			return "invalidinput";
 		}
 
 		if (transaction.getAmount() > transactionsService
@@ -64,11 +61,8 @@ public class TransactionsController {
 	public String transferMoneyToUser(@Valid Transaction transaction,
 			BindingResult result) {
 
-		/*
-		 * / EDIT - Should return some error page!!!
-		 */
 		if (result.hasErrors()) {
-			return "home";
+			return "invalidinput";
 		}
 
 		if (transaction.getAmount() > transactionsService
@@ -79,13 +73,10 @@ public class TransactionsController {
 		transaction.setDate(new DateTime().getCurrentDate());
 		transaction.setTime(new DateTime().getCurrentTime());
 
-		/*
-		 * / EDIT - Should return some error page!!!
-		 */
 		if (!accountsService.exists(transaction.getRecipientIban())) {
 			result.rejectValue("recipientIban",
 					"NoneExistingIban.transaction.recipientIban");
-			return "home";
+			return "invalidinput";
 		}
 
 		transactionsService.createBankClientTransaction(transaction);
@@ -101,7 +92,7 @@ public class TransactionsController {
 			BindingResult result, Principal principal) {
 
 		if (result.hasErrors()) {
-			return "home";
+			return "invalidinput";
 		}
 
 		if (accountsService.exists(transaction.getRecipientIban())) {
@@ -119,6 +110,7 @@ public class TransactionsController {
 				.getAmountForIban(transaction.getInitiatorIban())) {
 			return "insufficientfunds";
 		}
+
 		String username = principal.getName();
 
 		transaction.setDate(new DateTime().getCurrentDate());

@@ -9,7 +9,7 @@
 	<h3>Transfer money</h3>
 
 	<form method="post"
-		action="${pageContext.request.contextPath}/openbankaccount">
+		action="${pageContext.request.contextPath}/transfermoneytouser">
 		<table>
 			<tr>
 				<td>Your IBAN</td>
