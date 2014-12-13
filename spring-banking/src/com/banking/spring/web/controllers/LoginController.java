@@ -28,21 +28,6 @@ public class LoginController {
 		return "login";
 	}
 
-	@RequestMapping("/denied")
-	public String showDenied() {
-		return "denied";
-	}
-
-	// @RequestMapping("/admin")
-	// public String showAdmin(Model model) {
-	//
-	// List<User> users = usersService.getAllUsers();
-	//
-	// model.addAttribute("users", users);
-	//
-	// return "admin";
-	// }
-
 	@RequestMapping("/loggedout")
 	public String showLoggedOut() {
 		return "loggedout";

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
-  <display-name>spring-tutorial-50</display-name>
+  <display-name>online-banking</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -11,13 +11,13 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>offers</display-name>
-    <servlet-name>offers</servlet-name>
+    <display-name>banking</display-name>
+    <servlet-name>banking</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
-    <servlet-name>offers</servlet-name>
+    <servlet-name>banking</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
   <description>Spring Database</description>
@@ -52,6 +52,6 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
   <session-config>
-    <session-timeout>20</session-timeout>
+    <session-timeout>5</session-timeout>
   </session-config>
 </web-app>

@@ -52,11 +52,6 @@
 		<put-attribute name="content" value="/WEB-INF/tiles/home.jsp"></put-attribute>
 	</definition>
 
-	<definition name="offers" extends="banking.base">
-		<put-attribute name="title" value="Current Offers"></put-attribute>
-		<put-attribute name="content" value="/WEB-INF/tiles/offers.jsp"></put-attribute>
-	</definition>
-
 	<definition name="login" extends="banking.base">
 		<put-attribute name="title" value="Login"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/login.jsp"></put-attribute>
@@ -72,11 +67,6 @@
 	<definition name="accountcreated" extends="banking.base">
 		<put-attribute name="title" value="Account Created"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/accountcreated.jsp"></put-attribute>
-	</definition>
-
-	<definition name="admin" extends="banking.base">
-		<put-attribute name="title" value="Authorised Users Only!"></put-attribute>
-		<put-attribute name="content" value="/WEB-INF/tiles/admin.jsp"></put-attribute>
 	</definition>
 
 	<definition name="error" extends="banking.base">
