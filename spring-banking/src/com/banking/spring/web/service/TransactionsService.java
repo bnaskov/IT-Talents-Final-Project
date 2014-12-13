@@ -1,5 +1,7 @@
 package com.banking.spring.web.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,4 +33,9 @@ public class TransactionsService {
 	public void createAccount(Transaction transaction, String username) {
 		transactionsDao.createAccount(transaction, username);
 	}
+
+	public List<Transaction> getAccountTransactions(String accountIban) {
+		return transactionsDao.getAccountTransactions(accountIban);
+	}
+
 }

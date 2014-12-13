@@ -1,6 +1,7 @@
 package com.banking.spring.web.controllers;
 
 import java.security.Principal;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -129,10 +130,17 @@ public class TransactionsController {
 	}
 
 	@RequestMapping(value = "/transactions", method = RequestMethod.POST)
-	public String transactionHistory(@Valid Transaction transaction, Model model) {
+	public String transactionHistory(Transaction transaction, Model model) {
 
-		System.out.println(transaction.getInitiatorIban());
+		System.out.println("Hello");
 
-		return "home";
+		String accountIban = transaction.getInitiatorIban();
+		List<Transaction> transactions = transactionsService
+				.getAccountTransactions(accountIban);
+
+		model.addAttribute("transactions", transactions);
+		System.out.println(model);
+
+		return "transactions";
 	}
 }

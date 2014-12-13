@@ -20,3 +20,28 @@
 		</tr>
 	</table>
 </form>
+
+<table>
+	<thead>
+		<tr>
+<th>Date</th>
+ 		<th>Time</th> 	
+			<th>Initiator IBAN</th>
+			<th>Recipient IBAN</th>
+			<th>Amount</th>
+			<th>Reason for transfer</th>
+		</tr>
+	</thead>
+<tbody>
+		<c:forEach var="transaction" items="${transactions}">
+			<tr>
+				<td>${transaction.date}</td>
+				<td>${transaction.time}</td>
+				<td>${transaction.initiatorIban}</td>
+				<td>${transaction.recipientIban}</td>
+				<td>${transaction.amount}</td>
+				<td>${transaction.reason}</td>
+			</tr>
+		</c:forEach>
+	</tbody> 
+</table>

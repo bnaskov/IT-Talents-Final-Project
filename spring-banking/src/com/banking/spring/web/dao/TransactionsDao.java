@@ -160,4 +160,12 @@ public class TransactionsDao {
 
 	}
 
+	public List<Transaction> getAccountTransactions(String accountIban) {
+
+		return jdbc
+				.query("SELECT * FROM transactions WHERE initiatoriban=:iban OR recipientiban=:iban",
+						new MapSqlParameterSource("iban", accountIban),
+						new TransactionRowMapper());
+	}
+
 }
