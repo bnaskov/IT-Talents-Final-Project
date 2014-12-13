@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,12 +31,6 @@ public class TransactionsController {
 	@Autowired
 	public void setTransactionsService(TransactionsService transactionsService) {
 		this.transactionsService = transactionsService;
-	}
-
-	@RequestMapping(value = "/transactions", method = RequestMethod.POST)
-	public String getTransactionHistory() {
-
-		return "transactions";
 	}
 
 	@RequestMapping(value = "/paybills", method = RequestMethod.POST)
@@ -133,4 +128,11 @@ public class TransactionsController {
 		return "transfercompleted";
 	}
 
+	@RequestMapping(value = "/transactions", method = RequestMethod.POST)
+	public String transactionHistory(@Valid Transaction transaction, Model model) {
+
+		System.out.println(transaction.getInitiatorIban());
+
+		return "home";
+	}
 }
