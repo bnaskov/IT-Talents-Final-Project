@@ -1,1 +1,1 @@
-<h3>The transfer has been completed successfully</h3>
+<h3>The transfer has been successfully completed</h3>

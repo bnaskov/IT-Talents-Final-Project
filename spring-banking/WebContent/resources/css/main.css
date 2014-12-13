@@ -35,7 +35,7 @@ div.footer {
 
 div.content {
 	background-color: white;
-	min-height: 320px;
+	min-height: 350px;
 }
 
 div.header {
@@ -91,7 +91,7 @@ nav{
 .formtable {
 	width: 600px;
 	padding: 10px;
-	border: 1px solid blue;
+	border: 2px solid blue;
 }
 
 input[type=text] {
@@ -100,8 +100,7 @@ input[type=text] {
 }
 
 input[type=password] {
-	width: 250px;
-	
+	width: 250px;	
 }
 
 textarea {
@@ -162,23 +161,23 @@ input.delete {
 	padding: 20px 50px;
 }
 
-.transactions-table{	
+.transactions-table, .accounts{	
 	border: 2px solid blue;
 	margin-top: 10px;
 	margin: 10px auto;
 }
 
-.transactions-table thead tr th{	
+.transactions-table thead tr th, .accounts thead tr th{	
 	border: 2px solid blue;
 	padding: 5px;
 }
 
-.transactions-table td{
+.transactions-table td, .accounts td{
 	padding: 5px;
 }
 
 h3{
-	text-align: center
+	text-align: center;
 }
 
 #container > div.content > div > form > table{
@@ -188,5 +187,9 @@ h3{
 #container > div.content > div > form > table > tbody > tr:nth-child(4) > td:nth-child(2) > textarea{
 	width: 249px;
 	height: 150px;
+}
+
+#container > div.content > div > p {
+	text-align: center;
 }
 
