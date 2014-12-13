@@ -5,34 +5,36 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 
-<h1>Transfer money</h1>
+<div class="container">
+	<h3>Transfer money</h3>
 
-<form method="post"
-	action="${pageContext.request.contextPath}/openbankaccount">
-	<table>
-		<tr>
-			<td>Your IBAN</td>
-			<td><select name="initiatorIban">
-					<c:forEach var="account" items="${accounts}">
-						<option value="${account.iban}">${account.iban}</option>
-					</c:forEach>
-			</select></td>
-		</tr>
-		<tr>
-			<td>Other's IBAN</td>
-			<td><input type="text" name="recipientIban" /></td>
-		</tr>
-		<tr>
-			<td>Amount</td>
-			<td><input type="text" name="amount" /></td>
-		</tr>
-		<tr>
-			<td>Reason for transfer</td>
-			<td><textarea name="reason"></textarea></td>
-		</tr>
-		<tr>
-			<td colspan="2"><input type="submit" value="Transfer"></td>
-		</tr>
-	</table>
-
-</form>
+	<form method="post"
+		action="${pageContext.request.contextPath}/openbankaccount">
+		<table>
+			<tr>
+				<td>Your IBAN</td>
+				<td><select name="initiatorIban">
+						<c:forEach var="account" items="${accounts}">
+							<option value="${account.iban}">${account.iban}</option>
+						</c:forEach>
+				</select></td>
+			</tr>
+			<tr>
+				<td>Other's IBAN</td>
+				<td><input type="text" name="recipientIban" /></td>
+			</tr>
+			<tr>
+				<td>Amount</td>
+				<td><input type="text" name="amount" /></td>
+			</tr>
+			<tr>
+				<td>Reason for transfer</td>
+				<td><textarea placeholder="Reason for transfer" name="reason"></textarea></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Transfer"></td>
+			</tr>
+		</table>
+	</form>
+</div>

@@ -4,44 +4,47 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 
-<h3>Transaction history</h3>
+<div class="container">
+	<h3>Transaction history</h3>
 
+	
+		<form method="post"
+			action="${pageContext.request.contextPath}/transactions">
+			<table>
+				<tr>
+					<td><select name="initiatorIban">
+							<c:forEach var="account" items="${accounts}">
+								<option value="${account.iban}">${account.iban}</option>
+							</c:forEach>
+					</select></td>
+					<td><input type="submit" value="Get History"></td>
+				</tr>
+			</table>
+		</form>
+	
 
-<form method="post"
-	action="${pageContext.request.contextPath}/transactions">
-	<table>
-		<tr>
-			<td><select name="initiatorIban">
-					<c:forEach var="account" items="${accounts}">
-						<option value="${account.iban}">${account.iban}</option>
-					</c:forEach>
-			</select></td>
-			<td><input type="submit" value="Get History"></td>
-		</tr>
-	</table>
-</form>
-
-<table>
-	<thead>
-		<tr>
-<th>Date</th>
- 		<th>Time</th> 	
-			<th>Initiator IBAN</th>
-			<th>Recipient IBAN</th>
-			<th>Amount</th>
-			<th>Reason for transfer</th>
-		</tr>
-	</thead>
-<tbody>
-		<c:forEach var="transaction" items="${transactions}">
+	<table class="transactions-table">
+		<thead>
 			<tr>
-				<td>${transaction.date}</td>
-				<td>${transaction.time}</td>
-				<td>${transaction.initiatorIban}</td>
-				<td>${transaction.recipientIban}</td>
-				<td>${transaction.amount}</td>
-				<td>${transaction.reason}</td>
+				<th>Date</th>
+				<th>Time</th>
+				<th>Initiator IBAN</th>
+				<th>Recipient IBAN</th>
+				<th>Amount</th>
+				<th>Reason for transfer</th>
 			</tr>
-		</c:forEach>
-	</tbody> 
-</table>
+		</thead>
+		<tbody>
+			<c:forEach var="transaction" items="${transactions}">
+				<tr>
+					<td>${transaction.date}</td>
+					<td>${transaction.time}</td>
+					<td>${transaction.initiatorIban}</td>
+					<td>${transaction.recipientIban}</td>
+					<td>${transaction.amount}</td>
+					<td>${transaction.reason}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+</div>

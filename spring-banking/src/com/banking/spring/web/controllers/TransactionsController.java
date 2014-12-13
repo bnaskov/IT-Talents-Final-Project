@@ -132,14 +132,11 @@ public class TransactionsController {
 	@RequestMapping(value = "/transactions", method = RequestMethod.POST)
 	public String transactionHistory(Transaction transaction, Model model) {
 
-		System.out.println("Hello");
-
 		String accountIban = transaction.getInitiatorIban();
 		List<Transaction> transactions = transactionsService
 				.getAccountTransactions(accountIban);
 
 		model.addAttribute("transactions", transactions);
-		System.out.println(model);
 
 		return "transactions";
 	}
