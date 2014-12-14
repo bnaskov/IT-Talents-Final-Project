@@ -10,14 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.banking.spring.web.dao.Account;
+import com.banking.spring.web.dao.Deposit;
 import com.banking.spring.web.service.AccountsService;
-import com.banking.spring.web.service.TransactionsService;
+import com.banking.spring.web.service.DepositsService;
 
 @Controller
 public class AccountsController {
 
 	private AccountsService accountsService;
-	private TransactionsService transactionsService;
+	private DepositsService depositService;
 
 	@Autowired
 	public void setAccountsService(AccountsService accountsService) {
@@ -25,8 +26,8 @@ public class AccountsController {
 	}
 
 	@Autowired
-	public void setTransactionsService(TransactionsService transactionsService) {
-		this.transactionsService = transactionsService;
+	public void setDepositService(DepositsService depositService) {
+		this.depositService = depositService;
 	}
 
 	@RequestMapping("/bankaccounts")
@@ -35,8 +36,10 @@ public class AccountsController {
 		String username = principal.getName();
 
 		List<Account> accounts = accountsService.getAccounts(username);
+		List<Deposit> deposits = depositService.getDeposits(username);
 
 		model.addAttribute("accounts", accounts);
+		model.addAttribute("deposits", deposits);
 
 		return "bankaccounts";
 	}

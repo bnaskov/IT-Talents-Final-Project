@@ -168,9 +168,47 @@ public class TransactionsDao {
 						new TransactionRowMapper());
 	}
 
-	public Object createDeposit(Transaction transaction, Deposit deposit) {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional
+	public void createDeposit(Transaction transaction, Deposit deposit) {
+		MapSqlParameterSource transactionParams = new MapSqlParameterSource();
+
+		transactionParams.addValue("date", transaction.getDate());
+		transactionParams.addValue("time", transaction.getTime());
+		transactionParams.addValue("initiatoriban",
+				transaction.getInitiatorIban());
+		transactionParams.addValue("recipientiban",
+				transaction.getRecipientIban());
+		transactionParams.addValue("amount", transaction.getAmount());
+		transactionParams.addValue("reason", transaction.getReason());
+
+		double amountBeforeTransaction = getAmountForIban(transaction
+				.getInitiatorIban());
+
+		MapSqlParameterSource initiatorAccount = new MapSqlParameterSource();
+		initiatorAccount.addValue("amountBefore", amountBeforeTransaction);
+		initiatorAccount.addValue("amount", transaction.getAmount());
+		initiatorAccount.addValue("iban", transaction.getInitiatorIban());
+
+		MapSqlParameterSource newDeposit = new MapSqlParameterSource();
+		newDeposit.addValue("iban", deposit.getIban());
+		newDeposit.addValue("amount", deposit.getAmount());
+		newDeposit.addValue("duration", deposit.getDuration());
+		newDeposit.addValue("interest", deposit.getInterest());
+		newDeposit.addValue("username", deposit.getUsername());
+		newDeposit.addValue("startDate", deposit.getStartDate());
+		newDeposit.addValue("endDate", deposit.getEndDate());
+
+		jdbc.update(
+				"UPDATE accounts SET amount=(:amountBefore-:amount) WHERE iban=:iban",
+				initiatorAccount);
+
+		jdbc.update(
+				"INSERT INTO deposits (iban, amount, duration, interest, username, startDate, endDate) VALUES (:iban, :amount, :duration, :interest, :username, :startDate, :endDate)",
+				newDeposit);
+
+		jdbc.update(
+				"INSERT INTO transactions (date, time, initiatoriban, recipientiban, amount, reason) VALUES (:date, :time, :initiatoriban, :recipientiban, :amount, :reason)",
+				transactionParams);
 	}
 
 }

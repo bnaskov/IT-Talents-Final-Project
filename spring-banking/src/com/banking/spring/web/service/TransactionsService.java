@@ -40,8 +40,7 @@ public class TransactionsService {
 	}
 
 	public void createDeposit(Transaction transaction, Deposit deposit) {
-		return transactionsDao.createDeposit(transaction, deposit);
-
+		transactionsDao.createDeposit(transaction, deposit);
 	}
 
 }

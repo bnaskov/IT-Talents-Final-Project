@@ -28,4 +28,37 @@
 			</tr>
 		</c:forEach>
 	</table>
+	
+	<h3>List of Deposits</h3>
+
+	<table class="accounts">
+		<thead>
+			<tr>
+				<th>Start Date</th>
+				<th>End Date</th>
+				<th>IBAN</th>
+				<th>Interest</th>
+				<th>Amount</th>
+				<th>Currency</th>
+			</tr>
+		</thead>
+
+		<c:forEach var="deposit" items="${deposits}">
+			<tr>
+
+				<td><c:out value="${deposit.startDate}"></c:out></td>
+
+				<td><c:out value="${deposit.endDate}"></c:out></td>
+				
+				<td><c:out value="${deposit.iban}"></c:out></td>
+
+				<td><c:out value="${deposit.interest}"></c:out></td>
+
+				<td><c:out value="${deposit.amount}"></c:out></td>
+
+				<td><c:out value="BGN"></c:out></td>
+
+			</tr>
+		</c:forEach>
+	</table>
 </div>
