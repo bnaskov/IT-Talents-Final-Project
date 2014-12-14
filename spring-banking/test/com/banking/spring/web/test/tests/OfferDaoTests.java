@@ -1,4 +1,4 @@
-package com.caveofprogramming.spring.web.test.tests;
+package com.banking.spring.web.test.tests;
 
 //
 //@ActiveProfiles("dev")
