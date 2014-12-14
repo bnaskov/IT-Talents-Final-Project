@@ -22,8 +22,9 @@
 <sec:authorize access="isAuthenticated()">
 	<nav>
 		<ul>
-			<li><a href="<c:url value='/bankaccounts'/>">Bank accounts</a></li>
+			<li><a href="<c:url value='/bankaccounts'/>">Accounts</a></li>
 			<li><a href="<c:url value='/openbankaccount'/>">Open account</a></li>
+			<li><a href="<c:url value='/opendeposit'/>">Open deposit</a></li>
 			<li><a href="<c:url value='/paybills'/>">Pay bills</a></li>
 			<li><a href="<c:url value='/transfermoneytouser'/>">Transfer
 					money</a></li>
