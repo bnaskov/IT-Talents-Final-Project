@@ -51,8 +51,8 @@ public class TransactionsController {
 			return "insufficientfunds";
 		}
 
-		transaction.setDate(new DateTime().getCurrentDate());
-		transaction.setTime(new DateTime().getCurrentTime());
+		transaction.setDate(DateTime.getCurrentDate());
+		transaction.setTime(DateTime.getCurrentTime());
 
 		transactionsService.create(transaction);
 
@@ -75,8 +75,8 @@ public class TransactionsController {
 			return "insufficientfunds";
 		}
 
-		transaction.setDate(new DateTime().getCurrentDate());
-		transaction.setTime(new DateTime().getCurrentTime());
+		transaction.setDate(DateTime.getCurrentDate());
+		transaction.setTime(DateTime.getCurrentTime());
 
 		if (!accountsService.exists(transaction.getRecipientIban())) {
 			result.rejectValue("recipientIban",
@@ -85,9 +85,6 @@ public class TransactionsController {
 		}
 
 		transactionsService.createBankClientTransaction(transaction);
-
-		System.out.println(transaction);
-		System.out.println(IbanGenerator.generateIban());
 
 		return "transfercompleted";
 	}
@@ -118,8 +115,8 @@ public class TransactionsController {
 
 		String username = principal.getName();
 
-		transaction.setDate(new DateTime().getCurrentDate());
-		transaction.setTime(new DateTime().getCurrentTime());
+		transaction.setDate(DateTime.getCurrentDate());
+		transaction.setTime(DateTime.getCurrentTime());
 
 		transactionsService.createAccount(transaction, username);
 
@@ -165,13 +162,13 @@ public class TransactionsController {
 		String username = principal.getName();
 		String depositIban = transaction.getRecipientIban();
 
-		transaction.setDate(new DateTime().getCurrentDate());
-		transaction.setTime(new DateTime().getCurrentTime());
+		transaction.setDate(DateTime.getCurrentDate());
+		transaction.setTime(DateTime.getCurrentTime());
 
 		deposit.setUsername(username);
 		deposit.setIban(depositIban);
-		deposit.setStartDate(new DateTime().getCurrentDate());
-		deposit.setEndDate(new DateTime().getDateAfter(deposit.getDuration()));
+		deposit.setStartDate(DateTime.getCurrentDate());
+		deposit.setEndDate(DateTime.getDateAfter(deposit.getDuration()));
 
 		if (deposit.getDuration() == THREE_MONTHS) {
 			deposit.setInterest(THREE_MONTHS_INTEREST);

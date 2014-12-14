@@ -33,4 +33,8 @@ public class AccountsService {
 		return accountsDao.exists(recipientIban);
 	}
 
+	// public double getAmountForIban(String iban) {
+	// return accountsDao.getAmmountForIban(iban);
+	// }
+
 }

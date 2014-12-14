@@ -33,4 +33,14 @@ public class AccountsDao {
 						new MapSqlParameterSource("iban", recipientIban),
 						Integer.class) > 0;
 	}
+
+	public double getAmmountForIban(String iban) {
+
+		Account account = (Account) jdbc
+				.query("SELECT FIRST(amount) FROM accounts WHERE iban=:iban",
+						new MapSqlParameterSource("iban", iban),
+						new AccountRowMapper());
+
+		return account.getAmount();
+	}
 }

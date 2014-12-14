@@ -23,6 +23,14 @@ public class TransactionsDao {
 		this.jdbc = new NamedParameterJdbcTemplate(jdbc);
 	}
 
+	/*
+	 * Look at this
+	 */
+	// AccountsService acser = new AccountsService();
+
+	/*
+	 * This method is implemented in AccountsDao. You may del this.
+	 */
 	public double getAmountForIban(String iban) {
 		List<Transaction> transacts = null;
 
@@ -64,6 +72,11 @@ public class TransactionsDao {
 				initiatorAmountBeforeTransaction);
 		initiatorAccount.addValue("amount", transaction.getAmount());
 		initiatorAccount.addValue("iban", transaction.getInitiatorIban());
+
+		/*
+		 * Check this
+		 */
+		// double d = acser.getAmountForIban(transaction.getInitiatorIban());
 
 		double recipientAmountBeforeTransaction = getAmountForIban(transaction
 				.getRecipientIban());

@@ -17,11 +17,11 @@ public class DateTime {
 	 * // now, create a java.sql.Date from the java.util.Date java.sql.Date date
 	 * = new java.sql.Date(currentDate.getTime());
 	 */
-	public Date getCurrentDate() {
+	public static Date getCurrentDate() {
 		return new java.sql.Date(Calendar.getInstance().getTime().getTime());
 	}
 
-	public Time getCurrentTime() {
+	public static Time getCurrentTime() {
 		Calendar cal = Calendar.getInstance();
 		java.sql.Time now = java.sql.Time.valueOf(cal.get(Calendar.HOUR_OF_DAY)
 				+ ":" + cal.get(Calendar.MINUTE) + ":"
@@ -30,7 +30,7 @@ public class DateTime {
 		return now;
 	}
 
-	public Date getDateAfter(int months) {
+	public static Date getDateAfter(int months) {
 		Calendar calendar = Calendar.getInstance();
 		calendar.add(Calendar.MONTH, months);
 
