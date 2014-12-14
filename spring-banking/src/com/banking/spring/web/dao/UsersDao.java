@@ -1,5 +1,7 @@
 package com.banking.spring.web.dao;
 
+import java.util.List;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +57,10 @@ public class UsersDao {
 		return jdbc.queryForObject(
 				"SELECT count(*) FROM users WHERE username=:username",
 				new MapSqlParameterSource("username", username), Integer.class) > 0;
+	}
+
+	public List<User> getAllUsers() {
+		return jdbc.query("SELECT * FROM users", new UserRowMapper());
 	}
 
 }

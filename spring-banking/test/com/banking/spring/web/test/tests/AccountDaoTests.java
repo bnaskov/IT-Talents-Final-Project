@@ -16,6 +16,8 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.banking.spring.web.dao.Account;
+import com.banking.spring.web.dao.AccountsDao;
 import com.banking.spring.web.dao.User;
 import com.banking.spring.web.dao.UsersDao;
 
@@ -25,10 +27,13 @@ import com.banking.spring.web.dao.UsersDao;
 		"classpath:com/banking/spring/web/config/security-context.xml",
 		"classpath:com/banking/spring/web/test/config/datasource.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
-public class UserDaoTests {
+public class AccountDaoTests {
 
 	@Autowired
 	private UsersDao usersDao;
+
+	@Autowired
+	private AccountsDao accountsDao;
 
 	@Autowired
 	private DataSource dataSource;
@@ -44,20 +49,19 @@ public class UserDaoTests {
 	}
 
 	@Test
-	public void testUsers() {
+	public void testAccounts() {
 		User user = new User("ivanivanov", "Ivan Ivanov", "12345678",
 				"ivan@abv.bg", true, "ROLE_USER");
 
 		usersDao.create(user);
+		String username = user.getUsername();
 
-		List<User> users = usersDao.getAllUsers();
+		List<Account> accounts = accountsDao.getAccounts(username);
 
-		assertEquals("Number of users should be 1.", 1, users.size());
+		assertEquals("Number of accounts should be 1.", 1, accounts.size());
 
-		assertTrue("User should exist.", usersDao.exists(user.getUsername()));
-
-		assertEquals("Created user should be identical to retrieved user",
-				user, users.get(0));
+		assertTrue("Account should exist.",
+				accountsDao.exists(accounts.get(0).getIban()));
 
 	}
 
