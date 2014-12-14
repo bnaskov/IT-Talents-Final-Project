@@ -29,4 +29,11 @@ public class DateTime {
 
 		return now;
 	}
+
+	public Date getDateAfter(int months) {
+		Calendar calendar = Calendar.getInstance();
+		calendar.add(Calendar.MONTH, months);
+
+		return new java.sql.Date(calendar.getTime().getTime());
+	}
 }

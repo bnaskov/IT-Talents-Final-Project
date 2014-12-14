@@ -168,4 +168,9 @@ public class TransactionsDao {
 						new TransactionRowMapper());
 	}
 
+	public Object createDeposit(Transaction transaction, Deposit deposit) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.banking.spring.web.dao.Deposit;
 import com.banking.spring.web.dao.Transaction;
 import com.banking.spring.web.service.AccountsService;
 import com.banking.spring.web.service.TransactionsService;
@@ -20,6 +21,10 @@ import com.banking.spring.web.utils.IbanGenerator;
 
 @Controller
 public class TransactionsController {
+	private static final int THREE_MONTHS = 3;
+	private static final int TWELVE_MONTHS = 12;
+	private static final double THREE_MONTHS_INTEREST = 4;
+	private static final double TWELVE_MONTHS_INTEREST = 6;
 
 	private TransactionsService transactionsService;
 	private AccountsService accountsService;
@@ -131,5 +136,51 @@ public class TransactionsController {
 		model.addAttribute("transactions", transactions);
 
 		return "transactions";
+	}
+
+	@RequestMapping(value = "/opendeposit", method = RequestMethod.POST)
+	public String openDeposit(@Valid Transaction transaction,
+			@Valid Deposit deposit, BindingResult result, Principal principal) {
+
+		if (result.hasErrors()) {
+			return "invalidinput";
+		}
+
+		if (accountsService.exists(transaction.getRecipientIban())) {
+			String recipientIban = null;
+			while (true) {
+				recipientIban = IbanGenerator.generateIban();
+				if (!accountsService.exists(recipientIban)) {
+					transaction.setRecipientIban(recipientIban);
+					break;
+				}
+			}
+		}
+
+		if (transaction.getAmount() > transactionsService
+				.getAmountForIban(transaction.getInitiatorIban())) {
+			return "insufficientfunds";
+		}
+
+		String username = principal.getName();
+		String depositIban = transaction.getRecipientIban();
+
+		transaction.setDate(new DateTime().getCurrentDate());
+		transaction.setTime(new DateTime().getCurrentTime());
+
+		deposit.setUsername(username);
+		deposit.setIban(depositIban);
+		deposit.setStartDate(new DateTime().getCurrentDate());
+		deposit.setEndDate(new DateTime().getDateAfter(deposit.getDuration()));
+
+		if (deposit.getDuration() == THREE_MONTHS) {
+			deposit.setInterest(THREE_MONTHS_INTEREST);
+		} else {
+			deposit.setInterest(TWELVE_MONTHS_INTEREST);
+		}
+
+		transactionsService.createDeposit(transaction, deposit);
+
+		return "transfercompleted";
 	}
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.banking.spring.web.dao.Deposit;
 import com.banking.spring.web.dao.Transaction;
 import com.banking.spring.web.dao.TransactionsDao;
 
@@ -36,6 +37,11 @@ public class TransactionsService {
 
 	public List<Transaction> getAccountTransactions(String accountIban) {
 		return transactionsDao.getAccountTransactions(accountIban);
+	}
+
+	public void createDeposit(Transaction transaction, Deposit deposit) {
+		return transactionsDao.createDeposit(transaction, deposit);
+
 	}
 
 }
