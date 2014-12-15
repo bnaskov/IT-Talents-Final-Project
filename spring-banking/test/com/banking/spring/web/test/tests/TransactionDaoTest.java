@@ -109,8 +109,11 @@ public class TransactionDaoTest {
 				moneyGeorgeAccountAfterTransaction,
 				moneyGeorgeAccountBeforeTransaction + 1000, DELTA);
 
-		// assertTrue("Account should exist.",
-		// accountsDao.exists(accounts.get(0).getIban()));
+		String georgeAccountIbanString = a2.getIban();
 
+		assertEquals(
+				"Method getAmountForIban(String iban) must return the amount of money for the specific account",
+				transactionsDao.getAmountForIban(georgeAccountIbanString),
+				a2.getAmount(), DELTA);
 	}
 }

@@ -136,10 +136,10 @@ public class TransactionsController {
 	}
 
 	@RequestMapping(value = "/opendeposit", method = RequestMethod.POST)
-	public String openDeposit(@Valid Transaction transaction,
-			@Valid Deposit deposit, BindingResult result, Principal principal) {
+	public String openDeposit(@Valid Transaction transaction, BindingResult r1,
+			@Valid Deposit deposit, BindingResult r2, Principal principal) {
 
-		if (result.hasErrors()) {
+		if (r1.hasErrors() || r2.hasErrors()) {
 			return "invalidinput";
 		}
 
