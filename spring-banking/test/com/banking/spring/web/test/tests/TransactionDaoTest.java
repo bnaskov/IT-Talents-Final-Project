@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.banking.spring.web.dao.Account;
 import com.banking.spring.web.dao.AccountsDao;
+import com.banking.spring.web.dao.Deposit;
 import com.banking.spring.web.dao.Transaction;
 import com.banking.spring.web.dao.TransactionsDao;
 import com.banking.spring.web.dao.User;
@@ -115,5 +116,17 @@ public class TransactionDaoTest {
 				"Method getAmountForIban(String iban) must return the amount of money for the specific account",
 				transactionsDao.getAmountForIban(georgeAccountIbanString),
 				a2.getAmount(), DELTA);
+
+		Deposit georgeDeposit = new Deposit(1, "BG80ITOB93003502425012", 1500,
+				"georgeivanov", 3, 4, DateTime.getCurrentDate(),
+				DateTime.getDateAfter(3));
+		Transaction t2 = new Transaction(DateTime.getCurrentDate(),
+				DateTime.getCurrentTime(), a1.getIban(),
+				"BG80ITOB93003502425012", "Merry Christmas!", 1500);
+
+		transactionsDao.createDeposit(t2, georgeDeposit);
+
+		// TODO get all deposits by username
+
 	}
 }

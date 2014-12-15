@@ -13,8 +13,9 @@ public class Deposit extends BankProduct {
 
 	}
 
-	public Deposit(int duration, double interest, Date startDate, Date endDate) {
-		super();
+	public Deposit(int id, String iban, double amount, String username,
+			int duration, double interest, Date startDate, Date endDate) {
+		super(id, iban, amount, username);
 		this.duration = duration;
 		this.interest = interest;
 		this.startDate = startDate;
