@@ -8,4 +8,5 @@ public interface IBank
 	public boolean transferMoney(IClient client, String initiatorIban, String recipientIban, String reasonForTransfer, double amount);
 	public void openAccount(IClient client, String initiatorIban, double amount);
 	public void openDeposit(IClient client, String initiatorIban, double amount, depositType type);
+	public void closeDeposit(IClient client, String initiatorIban, double amount, depositType type);
 }
