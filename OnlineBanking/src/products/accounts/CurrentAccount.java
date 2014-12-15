@@ -6,5 +6,7 @@ public abstract class CurrentAccount extends Account {
 		super(amount);
 		// TODO Auto-generated constructor stub
 	}
+	
+	private int currency;
 
 }
