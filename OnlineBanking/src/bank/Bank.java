@@ -158,5 +158,52 @@ public class Bank implements IBank {
 		}
 
 	}
+	public void closeDeposit(IClient client, String initiatorIban,
+			double amount, depositType type) {
+		if (allAccounts.containsKey(initiatorIban)) {
+			if (allAccounts.get(initiatorIban).getAmount() >= amount) {
+				if (!client.getClientAccounts().containsKey("Deposit")) {
+					client.getClientAccounts().put("Deposit",
+							new HashMap<String, ArrayList<Account>>());
+				}
+				if (type.equals("DepositLongTerm")) {
+					if (!client.getClientAccounts().get("Deposit")
+							.containsKey("DepositLongTerm")) {
+						client.getClientAccounts()
+								.get("CurrentAccount")
+								.put("DepositLongTerm",
+										new ArrayList<Account>());
+					}
+					client.getClientAccounts().get("CurrentAccount")
+							.get("DepositLongTerm")
+							.add(new DepositLongTerm(amount));
+					allAccounts.get(initiatorIban).removeMoneyFromAccount(
+							amount);
+				} else if (type.equals("DepositShortTerm")) {
+					if (!client.getClientAccounts().get("Deposit")
+							.containsKey("DepositShortTerm")) {
+						client.getClientAccounts()
+								.get("CurrentAccount")
+								.put("DepositShortTerm",
+										new ArrayList<Account>());
+					}
+					client.getClientAccounts().get("CurrentAccount")
+							.get("DepositShortTerm")
+							.add(new DepositShortTerm(amount));
+					allAccounts.get(initiatorIban).removeMoneyFromAccount(
+							amount);
+				}
+			} else {
+				System.out
+						.println("You have not enough money to open this Deposit!"); // for
+																						// testing
+			}
+		} else {
+			System.out
+					.println("You don't have an account with this IBAN! Please enter a valid IBAN!"); // for
+																										// testing
+		}
+
+	}
 
 }
