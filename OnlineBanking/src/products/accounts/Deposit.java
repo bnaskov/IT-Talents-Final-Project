@@ -26,4 +26,34 @@ public abstract class Deposit extends Account {
 		this.durationMonths = durationMonths;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + durationMonths;
+		long temp;
+		temp = Double.doubleToLongBits(interest);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Deposit other = (Deposit) obj;
+		if (durationMonths != other.durationMonths)
+			return false;
+		if (Double.doubleToLongBits(interest) != Double
+				.doubleToLongBits(other.interest))
+			return false;
+		return true;
+	}
+	
+	
+
 }
