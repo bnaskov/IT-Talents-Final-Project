@@ -42,4 +42,9 @@ public class Manager extends Employee {
 			System.out.println(entry.getValue()); //for testing
 		}
 	}
+	public void listAccountInfo() {
+		for(Map.Entry<String, Account> entry : Bank.getInstance().getAccounts().entrySet()) {
+			System.out.println(entry.getValue()); //for testing
+		}
+	}
 }
