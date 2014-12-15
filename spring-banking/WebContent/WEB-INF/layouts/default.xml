@@ -8,6 +8,7 @@
 		<put-attribute name="includes" value=""></put-attribute>
 		<put-attribute name="title" value="Online Banking Homepage"></put-attribute>
 		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/tiles/content.jsp"></put-attribute>
 		<put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp"></put-attribute>
 	</definition>
 	
@@ -57,7 +58,7 @@
 	</definition>	
 
 	<definition name="home" extends="banking.base">
-		<put-attribute name="title" value="Bank Homepage"></put-attribute>
+		<put-attribute name="title" value="Online Banking Homepage"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/tiles/home.jsp"></put-attribute>
 	</definition>
 

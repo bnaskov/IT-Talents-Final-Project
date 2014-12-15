@@ -18,6 +18,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.banking.spring.web.dao.Account;
 import com.banking.spring.web.dao.AccountsDao;
 import com.banking.spring.web.dao.Deposit;
+import com.banking.spring.web.dao.DepositsDao;
 import com.banking.spring.web.dao.Transaction;
 import com.banking.spring.web.dao.TransactionsDao;
 import com.banking.spring.web.dao.User;
@@ -41,6 +42,9 @@ public class TransactionDaoTest {
 
 	@Autowired
 	private TransactionsDao transactionsDao;
+
+	@Autowired
+	private DepositsDao depositsDao;
 
 	@Autowired
 	private DataSource dataSource;
@@ -126,7 +130,12 @@ public class TransactionDaoTest {
 
 		transactionsDao.createDeposit(t2, georgeDeposit);
 
-		// TODO get all deposits by username
+		List<Deposit> userDeposits = depositsDao.getDeposits("georgeivanov");
+
+		assertEquals("George should have 1 deposit.", 1, userDeposits.size());
+
+		assertEquals("The two deposits should be equal", userDeposits.get(0),
+				georgeDeposit);
 
 	}
 }
