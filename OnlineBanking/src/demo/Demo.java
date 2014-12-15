@@ -77,5 +77,50 @@ public class Demo {
 		System.out.println("All accounts in bank: ");
 		miro.listAllAccounts();
 		
+		
+		System.out.println();
+		System.out.println();
+		ivan.openAccount(accounts.get("Deposit").get("DepositShortTerm").get(0).getIBAN(), 2000);
+		bank.addAccountsInBank(ivan.getClientAccounts().get("CurrentAccount").get("CurrentAccountBGN").get(0).getIBAN(), ivan.getClientAccounts().get("CurrentAccount").get("CurrentAccountBGN").get(0));
+		System.out.println(accounts.get("Deposit").get("DepositShortTerm").get(0));
+		System.out.println(ivan.getClientAccounts().get("CurrentAccount").get("CurrentAccountBGN"));
+		
+		System.out.println();
+		System.out.println("MANAGER TEST: ");
+		System.out.println();
+		Manager pepo = new Manager("Miro", "1234567", "miro@abv.bg", "35988984534", "12345", "Sofia", "Oborishte");
+		miro.listAccount(accounts.get("Deposit").get("DepositShortTerm").get(0).getIBAN());
+		
+		System.out.println();
+		Bank.getInstance().addClientToBank(ivan);
+		System.out.println("Client's accounts: ");
+		miro.listClientAccounts("8911156858");
+		
+		System.out.println();
+		System.out.println("All accounts in bank: ");
+		miro.listAllAccounts();
+		
+		
+		System.out.println();
+		System.out.println();
+		ivan.openAccount(accounts.get("Deposit").get("DepositShortTerm").get(0).getIBAN(), 2000);
+		bank.addAccountsInBank(ivan.getClientAccounts().get("CurrentAccount").get("CurrentAccountBGN").get(0).getIBAN(), ivan.getClientAccounts().get("CurrentAccount").get("CurrentAccountBGN").get(0));
+		System.out.println(accounts.get("Deposit").get("DepositShortTerm").get(0));
+		System.out.println(ivan.getClientAccounts().get("CurrentAccount").get("CurrentAccountBGN"));
+		
+		System.out.println();
+		System.out.println("MANAGER TEST: ");
+		System.out.println();
+		Manager kiro = new Manager("Miro", "1234567", "miro@abv.bg", "35988984534", "12345", "Sofia", "Oborishte");
+		miro.listAccount(accounts.get("Deposit").get("DepositShortTerm").get(0).getIBAN());
+		
+		System.out.println();
+		Bank.getInstance().addClientToBank(ivan);
+		System.out.println("Client's accounts: ");
+		miro.listClientAccounts("8911156858");
+		
+		System.out.println();
+		System.out.println("All accounts in bank: ");
+		miro.listAllAccounts();
 	}
 }
